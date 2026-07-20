@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNUSABLE™ — Livello 1</title>
+<style>
+  :root{
+    --mustard:#E8B33D;
+    --teal:#123832;
+    --teal-2:#1B4B43;
+    --cream:#F2ECD9;
+    --red:#D64545;
+    --ink:#0D2622;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--teal);
+    color:var(--cream);
+    font-family:'Courier New', monospace;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    overflow-x:hidden;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
+  }
+  .stage{
+    width:100%;
+    max-width:480px;
+  }
+  .brand{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:10px;
+    font-size:12px;
+    letter-spacing:2px;
+    opacity:0.7;
+  }
+  .brand b{color:var(--mustard); font-size:14px;}
+  .levelbar{
+    display:flex;
+    gap:6px;
+    margin-bottom:22px;
+  }
+  .piece{
+    flex:1;
+    height:10px;
+    background:var(--teal-2);
+    border:2px solid var(--ink);
+    position:relative;
+    transition:transform .15s;
+  }
+  .piece.done{background:var(--mustard);}
+  .piece:hover{transform:translateY(-3px) rotate(-2deg);}
+  .card{
+    background:var(--cream);
+    color:var(--ink);
+    border-radius:6px;
+    padding:28px 24px;
+    box-shadow:8px 8px 0 var(--ink);
+    position:relative;
+  }
+  h1{
+    font-family:Impact, 'Arial Black', sans-serif;
+    font-size:32px;
+    margin:0 0 4px;
+    letter-spacing:1px;
+    color:var(--teal);
+  }
+  .sub{
+    font-size:13px;
+    margin:0 0 20px;
+    color:var(--red);
+    font-weight:bold;
+  }
+  .display{
+    background:var(--ink);
+    color:var(--mustard);
+    font-family:'Courier New', monospace;
+    font-size:26px;
+    letter-spacing:6px;
+    text-align:center;
+    padding:14px 10px;
+    border-radius:4px;
+    margin-bottom:18px;
+    min-height:20px;
+  }
+  .display.shake{animation:shake .3s;}
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-6px) rotate(-1deg);}
+    75%{transform:translateX(6px) rotate(1deg);}
+  }
+  .hint{
+    font-size:11px;
+    text-align:center;
+    color:#5a5a4a;
+    margin:-10px 0 16px;
+    min-height:14px;
+  }
+  .pad{
+    position:relative;
+    height:230px;
+    margin-bottom:16px;
+  }
+  .key{
+    position:absolute;
+    width:64px;
+    height:52px;
+    border:none;
+    border-radius:5px;
+    background:var(--teal-2);
+    color:var(--cream);
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:3px 3px 0 var(--ink);
+    transition:left .35s cubic-bezier(.34,1.56,.64,1), top .35s cubic-bezier(.34,1.56,.64,1), background .15s;
+  }
+  .key:hover{background:var(--red);}
+  .key:active{box-shadow:1px 1px 0 var(--ink); transform:translate(2px,2px);}
+  .actions{
+    display:flex;
+    gap:10px;
+  }
+  button.main{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:5px;
+    background:var(--teal);
+    color:var(--cream);
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    font-size:14px;
+    cursor:pointer;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  button.main:active{box-shadow:1px 1px 0 var(--ink); transform:translate(3px,3px);}
+  button.ghost{
+    background:transparent;
+    color:var(--ink);
+    box-shadow:none;
+    border:2px dashed var(--ink);
+    flex:0 0 auto;
+    padding:12px 14px;
+  }
+  .toast{
+    position:fixed;
+    bottom:22px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--mustard);
+    color:var(--ink);
+    padding:10px 18px;
+    border-radius:4px;
+    font-size:13px;
+    font-weight:bold;
+    opacity:0;
+    transition:opacity .25s, transform .25s;
+    pointer-events:none;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  .win{
+    display:none;
+    text-align:center;
+  }
+  .win.show{display:block;}
+  .win h2{color:var(--teal); font-family:Impact,sans-serif; font-size:30px; margin:0 0 8px;}
+  .win p{font-size:13px; margin:0 0 18px;}
+
+  .gravitybox{
+    position:relative;
+    height:260px;
+    background:
+      radial-gradient(circle, var(--ink) 1px, transparent 1px) 0 0/16px 16px,
+      var(--teal-2);
+    background-color:#dcd4b8;
+    border-radius:5px;
+    overflow:hidden;
+    margin-bottom:16px;
+    border:2px solid var(--ink);
+  }
+  .pill{
+    position:absolute;
+    left:0; top:0;
+    width:150px;
+    height:40px;
+    border-radius:20px;
+    background:var(--ink);
+    color:var(--cream);
+    font-size:12px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 10px;
+    cursor:pointer;
+    user-select:none;
+    box-shadow:2px 2px 0 rgba(0,0,0,0.3);
+    will-change:transform;
+  }
+  .pill.accepted{
+    background:var(--mustard);
+    color:var(--ink);
+  }
+  .pill.accepted::after{
+    content:" ✓";
+  }
+  #submitBtn2:disabled{
+    opacity:0.4;
+    cursor:not-allowed;
+  }
+
+  .bouncebox{
+    position:relative;
+    height:260px;
+    background:
+      radial-gradient(circle, var(--ink) 1px, transparent 1px) 0 0/16px 16px,
+      var(--teal-2);
+    background-color:#dcd4b8;
+    border-radius:5px;
+    overflow:hidden;
+    margin-bottom:10px;
+    border:2px solid var(--ink);
+  }
+  .dvdbtn{
+    position:absolute;
+    left:0; top:0;
+    background:var(--red);
+    color:var(--cream);
+    border:none;
+    border-radius:6px;
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    font-size:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:2px 2px 0 rgba(0,0,0,0.35);
+    will-change:transform, filter;
+  }
+  .progress3{
+    font-size:12px;
+    text-align:center;
+    margin:0 0 16px;
+    color:var(--teal);
+    font-weight:bold;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="brand"><span>SISTEMA <b>UNUSABLE™</b></span><span id="levelLabel">LIVELLO 01 / 10</span></div>
+  <div class="levelbar" id="levelbar"></div>
+  <div class="navrow">
+    <button class="navbtn" id="prevLevelBtn">‹ livello prec.</button>
+    <button class="navbtn" id="nextLevelBtn">livello succ. ›</button>
+  </div>
+
+  <div class="card">
+    <div id="level1">
+      <div id="game">
+        <h1>Che data è oggi?</h1>
+        <p class="sub">⚠ i tasti non collaborano</p>
+        <div class="display" id="display">__/__/____</div>
+        <div class="hint" id="hint">formato: GG/MM/AAAA</div>
+        <div class="pad" id="pad"></div>
+        <div class="actions">
+          <button class="ghost" id="clearBtn">⌫ pulisci</button>
+          <button class="main" id="submitBtn">conferma data</button>
+        </div>
+      </div>
+      <div class="win" id="win">
+        <h2>LIVELLO 1 SUPERATO</h2>
+        <p>Ce l'hai fatta nonostante tutto. Preparati, ora entra in gioco la gravità.</p>
+        <button class="main" id="nextBtn">livello 2 →</button>
+      </div>
+    </div>
+
+    <div id="level2" style="display:none">
+      <div id="game2">
+        <h1>Accetta i termini</h1>
+        <p class="sub">⚠ tutto cade, anche il consenso</p>
+        <div class="gravitybox" id="gravitybox"></div>
+        <div class="hint">clicca ogni pillola al volo per accettarla</div>
+        <div class="actions" style="margin-top:16px">
+          <button class="main" id="submitBtn2" disabled>conferma e prosegui</button>
+        </div>
+      </div>
+      <div class="win" id="win2">
+        <h2>LIVELLO 2 SUPERATO</h2>
+        <p>Hai accettato tutto mentre cadeva. Un vero atto di fiducia digitale.</p>
+        <button class="main" id="nextBtn2">livello 3 →</button>
+      </div>
+    </div>
+
+    <div id="level3" style="display:none">
+      <div id="game3">
+        <h1>Prendi il tasto INVIA</h1>
+        <p class="sub">⚠ più lo becchi, più scappa veloce</p>
+        <div class="bouncebox" id="bouncebox"></div>
+        <p class="progress3" id="progress3">colpito: 0 / 5</p>
+        <div class="hint">clicca il tasto rosso mentre rimbalza — niente scorciatoie</div>
+      </div>
+      <div class="win" id="win3">
+        <h2>LIVELLO 3 SUPERATO</h2>
+        <p>L'hai preso al volo, sempre più piccolo e sempre più nervoso. Rispetto.</p>
+        <button class="main" id="nextBtn3">livello 4 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  const TOTAL_LEVELS = 10;
+
+  // ---- levelbar ----
+  const levelbar = document.getElementById('levelbar');
+  for(let i=0;i<TOTAL_LEVELS;i++){
+    const p = document.createElement('div');
+    p.className = 'piece';
+    levelbar.appendChild(p);
+  }
+  const levelLabel = document.getElementById('levelLabel');
+
+  function goToLevel(n){
+    document.querySelectorAll('.card > div[id^="level"]').forEach(el=>{
+      el.style.display = 'none';
+    });
+    document.getElementById('level'+n).style.display = 'block';
+    levelLabel.textContent = 'LIVELLO ' + String(n).padStart(2,'0') + ' / ' + TOTAL_LEVELS;
+    for(let i=0;i<TOTAL_LEVELS;i++){
+      levelbar.children[i].classList.toggle('done', i < n-1);
+    }
+    if(n === 2) initLevel2();
+    if(n === 3) initLevel3();
+  }
+  goToLevel(1);
+
+  // ---- toast ----
+  const toastEl = document.getElementById('toast');
+  let toastTimer;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 1600);
+  }
+
+  // ---- keypad: 10 digits, posizioni che si rimescolano ----
+  const pad = document.getElementById('pad');
+  const PAD_W = 4; // colonne
+  const KEY_W = 64, KEY_H = 52, GAP = 8;
+  const cols = 4, rows = 3;
+  const digits = ['0','1','2','3','4','5','6','7','8','9'];
+  let slots = []; // posizioni disponibili {x,y}
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      slots.push({x:c*(KEY_W+GAP), y:r*(KEY_H+GAP)});
+    }
+  }
+
+  function shuffle(arr){
+    const a = arr.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a;
+  }
+
+  let keyEls = [];
+  function layoutKeys(){
+    const pos = shuffle(slots).slice(0, digits.length);
+    digits.forEach((d,i)=>{
+      keyEls[i].style.left = pos[i].x + 'px';
+      keyEls[i].style.top = pos[i].y + 'px';
+    });
+  }
+
+  digits.forEach(d=>{
+    const b = document.createElement('button');
+    b.className = 'key';
+    b.textContent = d;
+    b.type = 'button';
+    pad.appendChild(b);
+    keyEls.push(b);
+    b.addEventListener('click', ()=>{
+      pushDigit(d);
+      // rimescola SOLO ogni tanto: divertente, non frustrante
+      if(Math.random() < 0.55){
+        setTimeout(layoutKeys, 120);
+      }
+    });
+  });
+  layoutKeys();
+
+  // ---- display data ----
+  const display = document.getElementById('display');
+  const hint = document.getElementById('hint');
+  let entered = ''; // fino a 8 cifre GGMMAAAA
+
+  const hints = [
+    'formato: GG/MM/AAAA',
+    'i numeri sono timidi oggi',
+    'quasi... forse...',
+    'la tastiera ha vita propria',
+    'coraggio, funziona (a tratti)'
+  ];
+
+  function render(){
+    const g = entered.padEnd(8,'_');
+    display.textContent =
+      g.slice(0,2) + '/' + g.slice(2,4) + '/' + g.slice(4,8);
+  }
+  render();
+
+  function pushDigit(d){
+    if(entered.length >= 8) return;
+    entered += d;
+    render();
+    hint.textContent = hints[Math.floor(Math.random()*hints.length)];
+  }
+
+  document.getElementById('clearBtn').addEventListener('click', ()=>{
+    entered = entered.slice(0,-1);
+    render();
+    toast('un passo indietro, coraggio');
+  });
+
+  document.getElementById('submitBtn').addEventListener('click', ()=>{
+    if(entered.length < 8){
+      display.classList.add('shake');
+      setTimeout(()=>display.classList.remove('shake'), 300);
+      toast('manca qualche cifra');
+      return;
+    }
+    const dd = +entered.slice(0,2), mm = +entered.slice(2,4), yyyy = +entered.slice(4,8);
+    if(dd<1||dd>31||mm<1||mm>12||yyyy<1000){
+      display.classList.add('shake');
+      setTimeout(()=>display.classList.remove('shake'), 300);
+      toast('quella data non esiste da nessuna parte');
+      return;
+    }
+    document.getElementById('game').style.display = 'none';
+    document.getElementById('win').classList.add('show');
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    goToLevel(2);
+  });
+
+  // ==================================================
+  // LIVELLO 2 — gravità
+  // ==================================================
+  let level2Ready = false;
+  function initLevel2(){
+    if(level2Ready) return; // inizializza una sola volta
+    level2Ready = true;
+
+    const box = document.getElementById('gravitybox');
+    const submitBtn2 = document.getElementById('submitBtn2');
+    const BOX_W = box.clientWidth, BOX_H = box.clientHeight;
+    const PILL_W = 150, PILL_H = 40;
+    const G = 0.35;       // accelerazione di gravità
+    const REST = 0.55;    // rimbalzo (restituzione)
+    const FRICTION = 0.995;
+
+    const labels = [
+      'Accetto la gravità',
+      'Accetto i cookie (letterali)',
+      'Accetto di non capire perché cade'
+    ];
+
+    const pills = labels.map((label, i)=>{
+      const el = document.createElement('div');
+      el.className = 'pill';
+      el.textContent = label;
+      box.appendChild(el);
+      return {
+        el,
+        x: 10 + Math.random()*(BOX_W - PILL_W - 20),
+        y: -40 - i*90,
+        vx: (Math.random()-0.5)*2.5,
+        vy: 0,
+        accepted: false
+      };
+    });
+
+    function render(p){
+      p.el.style.transform = 'translate('+p.x+'px,'+p.y+'px)';
+    }
+
+    function step(){
+      pills.forEach(p=>{
+        if(p.accepted){ render(p); return; }
+        p.vy += G;
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // pareti laterali
+        if(p.x < 0){ p.x = 0; p.vx *= -REST; }
+        if(p.x > BOX_W - PILL_W){ p.x = BOX_W - PILL_W; p.vx *= -REST; }
+
+        // pavimento
+        if(p.y > BOX_H - PILL_H){
+          p.y = BOX_H - PILL_H;
+          p.vy *= -REST;
+          p.vx *= FRICTION;
+          if(Math.abs(p.vy) < 1.2) p.vy = -Math.random()*4; // piccolo rimbalzo residuo, mai fermo del tutto
+        }
+        render(p);
+      });
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+
+    pills.forEach(p=>{
+      p.el.addEventListener('click', ()=>{
+        if(p.accepted) return;
+        p.accepted = true;
+        p.vx = 0; p.vy = 0;
+        p.el.classList.add('accepted');
+        toast('accettato al volo');
+        if(pills.every(q=>q.accepted)){
+          submitBtn2.disabled = false;
+          toast('tutto accettato, si può proseguire');
+        }
+      });
+    });
+
+    submitBtn2.addEventListener('click', ()=>{
+      document.getElementById('game2').style.display = 'none';
+      document.getElementById('win2').classList.add('show');
+    });
+
+    document.getElementById('nextBtn2').addEventListener('click', ()=>{
+      goToLevel(3);
+    });
+  }
+
+  // ==================================================
+  // LIVELLO 3 — bounce puro, difficoltà crescente
+  // ==================================================
+  let level3Ready = false;
+  function initLevel3(){
+    if(level3Ready) return;
+    level3Ready = true;
+
+    const box = document.getElementById('bouncebox');
+    const progress3 = document.getElementById('progress3');
+    const BOX_W = box.clientWidth, BOX_H = box.clientHeight;
+    const REQUIRED_HITS = 5;
+    const colors = ['#D64545', '#1B4B43', '#E8B33D', '#123832'];
+
+    const btn = document.createElement('button');
+    btn.className = 'dvdbtn';
+    btn.type = 'button';
+    btn.textContent = 'INVIA';
+    box.appendChild(btn);
+
+    let w = 90, h = 44;
+    btn.style.width = w+'px';
+    btn.style.height = h+'px';
+
+    const state = {
+      x: Math.random()*(BOX_W-w),
+      y: Math.random()*(BOX_H-h),
+      speed: 3.2,
+      angle: Math.PI/4 + Math.random()*0.6,
+      hits: 0
+    };
+    state.vx = state.speed * Math.cos(state.angle);
+    state.vy = state.speed * Math.sin(state.angle) * (Math.random()<0.5?1:-1);
+
+    function bounceKick(){
+      // ad ogni rimbalzo sul muro: colore diverso, leggera variazione d'angolo
+      btn.style.background = colors[Math.floor(Math.random()*colors.length)];
+      const jitter = (Math.random()-0.5)*0.5;
+      const speed = Math.hypot(state.vx, state.vy);
+      const ang = Math.atan2(state.vy, state.vx) + jitter;
+      state.vx = speed * Math.cos(ang);
+      state.vy = speed * Math.sin(ang);
+    }
+
+    function step(){
+      state.x += state.vx;
+      state.y += state.vy;
+
+      if(state.x <= 0){ state.x = 0; state.vx *= -1; bounceKick(); }
+      if(state.x >= BOX_W - w){ state.x = BOX_W - w; state.vx *= -1; bounceKick(); }
+      if(state.y <= 0){ state.y = 0; state.vy *= -1; bounceKick(); }
+      if(state.y >= BOX_H - h){ state.y = BOX_H - h; state.vy *= -1; bounceKick(); }
+
+      btn.style.transform = 'translate('+state.x+'px,'+state.y+'px)';
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      state.hits++;
+      progress3.textContent = 'colpito: ' + state.hits + ' / ' + REQUIRED_HITS;
+
+      // difficoltà crescente: più veloce e più piccolo ad ogni colpo
+      const speed = Math.hypot(state.vx, state.vy) * 1.16;
+      const ang = Math.atan2(state.vy, state.vx) + (Math.random()-0.5)*1.2;
+      state.vx = speed * Math.cos(ang);
+      state.vy = speed * Math.sin(ang);
+
+      w = Math.max(46, w - 7);
+      h = Math.max(28, h - 3);
+      btn.style.width = w+'px';
+      btn.style.height = h+'px';
+
+      toast('preso! ora corre di più');
+
+      if(state.hits >= REQUIRED_HITS){
+        document.getElementById('game3').style.display = 'none';
+        document.getElementById('win3').classList.add('show');
+      }
+    });
+
+    document.getElementById('nextBtn3').addEventListener('click', ()=>{
+      toast('livello 4 in arrivo — torna presto');
+    });
+  }
+})();
+</script>
+</body>
+</html>
