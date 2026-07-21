@@ -37,11 +37,11 @@
     justify-content:space-between;
     align-items:baseline;
     margin-bottom:10px;
-    font-size:12px;
+    font-size:13px;
     letter-spacing:2px;
     opacity:0.7;
   }
-  .brand b{color:var(--mustard); font-size:14px;}
+  .brand b{color:var(--mustard); font-size:15px;}
   .levelbar{
     display:flex;
     gap:6px;
@@ -67,13 +67,13 @@
   }
   h1{
     font-family:Impact, 'Arial Black', sans-serif;
-    font-size:32px;
+    font-size:35px;
     margin:0 0 4px;
     letter-spacing:1px;
     color:var(--teal);
   }
   .sub{
-    font-size:13px;
+    font-size:14px;
     margin:0 0 20px;
     color:var(--red);
     font-weight:bold;
@@ -82,7 +82,7 @@
     background:var(--ink);
     color:var(--mustard);
     font-family:'Courier New', monospace;
-    font-size:26px;
+    font-size:29px;
     letter-spacing:6px;
     text-align:center;
     padding:14px 10px;
@@ -97,7 +97,7 @@
     75%{transform:translateX(6px) rotate(1deg);}
   }
   .hint{
-    font-size:11px;
+    font-size:12px;
     text-align:center;
     color:#5a5a4a;
     margin:-10px 0 16px;
@@ -116,7 +116,7 @@
     border-radius:5px;
     background:var(--teal-2);
     color:var(--cream);
-    font-size:20px;
+    font-size:22px;
     font-weight:bold;
     cursor:pointer;
     box-shadow:3px 3px 0 var(--ink);
@@ -137,7 +137,7 @@
     color:var(--cream);
     font-family:'Courier New', monospace;
     font-weight:bold;
-    font-size:14px;
+    font-size:15px;
     cursor:pointer;
     box-shadow:4px 4px 0 var(--ink);
   }
@@ -159,7 +159,7 @@
     color:var(--ink);
     padding:10px 18px;
     border-radius:4px;
-    font-size:13px;
+    font-size:14px;
     font-weight:bold;
     opacity:0;
     transition:opacity .25s, transform .25s;
@@ -172,8 +172,8 @@
     text-align:center;
   }
   .win.show{display:block;}
-  .win h2{color:var(--teal); font-family:Impact,sans-serif; font-size:30px; margin:0 0 8px;}
-  .win p{font-size:13px; margin:0 0 18px;}
+  .win h2{color:var(--teal); font-family:Impact,sans-serif; font-size:33px; margin:0 0 8px;}
+  .win p{font-size:14px; margin:0 0 18px;}
 
   .gravitybox{
     position:relative;
@@ -195,7 +195,7 @@
     border-radius:20px;
     background:var(--ink);
     color:var(--cream);
-    font-size:12px;
+    font-size:13px;
     font-weight:bold;
     display:flex;
     align-items:center;
@@ -240,7 +240,7 @@
     border-radius:6px;
     font-family:'Courier New', monospace;
     font-weight:bold;
-    font-size:14px;
+    font-size:15px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -249,7 +249,7 @@
     will-change:transform, filter;
   }
   .progress3{
-    font-size:12px;
+    font-size:13px;
     text-align:center;
     margin:0 0 16px;
     color:var(--teal);
@@ -268,7 +268,7 @@
     color:var(--cream);
     opacity:0.75;
     font-family:'Courier New', monospace;
-    font-size:11px;
+    font-size:12px;
     padding:6px;
     border-radius:4px;
     cursor:pointer;
@@ -310,7 +310,7 @@
     background:var(--teal-2);
     color:var(--cream);
     font-weight:bold;
-    font-size:13px;
+    font-size:14px;
     cursor:pointer;
     box-shadow:2px 2px 0 rgba(0,0,0,0.3);
     transition:transform .08s;
@@ -337,7 +337,7 @@
   .phonevalue{
     background:var(--ink);
     color:var(--mustard);
-    font-size:22px;
+    font-size:24px;
     letter-spacing:3px;
     text-align:center;
     padding:12px;
@@ -364,26 +364,26 @@
     border-radius:4px;
     font-family:'Courier New', monospace;
     font-weight:bold;
-    font-size:11px;
+    font-size:12px;
     cursor:pointer;
   }
   .modebtn.active{background:var(--mustard);}
   .anglelabel{
-    font-size:11px;
+    font-size:12px;
     display:block;
     margin-bottom:2px;
     color:var(--teal);
     font-weight:bold;
   }
   .distanceline{
-    font-size:12px;
+    font-size:13px;
     text-align:center;
     font-weight:bold;
     margin:2px 0 0;
     color:var(--teal);
   }
   .proxlabel{
-    font-size:13px;
+    font-size:14px;
     text-align:center;
     font-weight:bold;
     margin:0 0 4px;
@@ -423,20 +423,27 @@
     border-radius:4px;
     font-family:'Courier New', monospace;
     font-weight:bold;
-    font-size:11px;
+    font-size:12px;
     cursor:pointer;
   }
   .nudgebtn:active{background:var(--mustard);}
 
-  #level6.fullscreen-level{
+  .fullscreen-level{
     position:fixed;
     inset:0;
     z-index:500;
+    color:var(--cream);
+    overflow:auto;
+  }
+  #level6.fullscreen-level{
     background:var(--teal);
     background-image:
       repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
-    color:var(--cream);
-    overflow:auto;
+  }
+  #level7.fullscreen-level{
+    background:var(--teal);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
   }
   .fs-inner{
     min-height:100%;
@@ -457,25 +464,25 @@
     padding:8px 14px;
     border-radius:4px;
     font-family:'Courier New', monospace;
-    font-size:12px;
+    font-size:13px;
     cursor:pointer;
   }
   .fsprompt{
     font-family:Impact, 'Arial Black', sans-serif;
-    font-size:clamp(24px,5vw,42px);
+    font-size:clamp(26px,5vw,46px);
     color:var(--mustard);
     text-align:center;
     margin:0 0 4px;
   }
   .fssub{
-    font-size:13px;
+    font-size:14px;
     text-align:center;
     color:var(--red);
     font-weight:bold;
     margin:0 0 18px;
   }
   .synlist{
-    font-size:13px;
+    font-size:14px;
     opacity:0.85;
     text-align:center;
     max-width:640px;
@@ -500,14 +507,14 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:24px;
+    font-size:26px;
     font-weight:bold;
     border-radius:6px;
     box-shadow:3px 3px 0 rgba(0,0,0,0.4);
     font-family:'Courier New', monospace;
   }
   .synInput{
-    font-size:28px;
+    font-size:31px;
     font-family:'Courier New', monospace;
     text-align:center;
     letter-spacing:4px;
@@ -524,7 +531,7 @@
     border-color:var(--red);
   }
   .fieldhint{
-    font-size:12px;
+    font-size:13px;
     opacity:0.8;
     margin:0 0 18px;
   }
@@ -539,14 +546,14 @@
     color:var(--red);
     font-family:'Courier New', monospace;
     font-weight:bold;
-    font-size:20px;
+    font-size:22px;
     border-radius:5px;
     box-shadow:2px 2px 0 rgba(0,0,0,0.4);
     z-index:2000;
     pointer-events:none;
   }
   .fshint{
-    font-size:13px;
+    font-size:14px;
     opacity:0.85;
     margin:6px 0 30px;
     text-align:center;
@@ -559,17 +566,281 @@
     gap:6px;
   }
   .trashlabel{
-    font-size:11px;
+    font-size:12px;
     opacity:0.7;
   }
   .fallingLetter{
     position:fixed;
-    font-size:22px;
+    font-size:24px;
     font-weight:bold;
     color:var(--red);
     z-index:2000;
     pointer-events:none;
     transition:transform .6s ease-in, opacity .6s ease-in;
+  }
+
+  .fslabel{
+    font-size:14px;
+    opacity:0.9;
+    margin-bottom:8px;
+  }
+  input.syninput{
+    font-family:'Courier New', monospace;
+    font-size:29px;
+    letter-spacing:2px;
+    padding:10px 8px;
+    border:3px solid var(--cream);
+    border-radius:6px;
+    background:var(--ink);
+    color:var(--mustard);
+    text-align:center;
+    outline:none;
+    margin-bottom:26px;
+    box-sizing:content-box;
+  }
+  input.syninput.shake{animation:shake .3s;}
+  .fallenLetter{
+    position:fixed;
+    left:0; top:0;
+    width:28px; height:28px;
+    background:var(--cream);
+    color:var(--red);
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:4px;
+    box-shadow:2px 2px 0 rgba(0,0,0,0.35);
+    z-index:900;
+    pointer-events:none;
+    will-change:transform;
+  }
+
+  .mazeWrap{
+    position:relative;
+    margin:8px 0 4px;
+    touch-action:none;
+  }
+  .mazeGrid{
+    display:grid;
+    background:var(--ink);
+    border-radius:6px;
+    padding:4px;
+  }
+  .mazeCell{
+    box-sizing:border-box;
+    border:3px solid var(--teal-2);
+  }
+  .mazeCell.open-n{border-top-color:transparent;}
+  .mazeCell.open-e{border-right-color:transparent;}
+  .mazeCell.open-s{border-bottom-color:transparent;}
+  .mazeCell.open-w{border-left-color:transparent;}
+  .mazePlayer, .mazeTarget{
+    position:absolute;
+    top:4px; left:4px;
+    width:24px; height:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:16px;
+    pointer-events:none;
+  }
+  .mazePlayer{
+    background:var(--mustard);
+    border-radius:50%;
+    transition:transform .12s ease;
+    z-index:2;
+  }
+  .mazeTarget{
+    font-size:22px;
+    z-index:1;
+  }
+  .dpad{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    margin-top:22px;
+  }
+  .dpad-mid{
+    display:flex;
+    gap:6px;
+    align-items:center;
+  }
+  .dpadbtn{
+    width:52px;
+    height:52px;
+    border-radius:8px;
+    border:2px solid var(--cream);
+    background:transparent;
+    color:var(--cream);
+    font-size:22px;
+    cursor:pointer;
+  }
+  .dpad-ok{
+    background:var(--mustard);
+    color:var(--ink);
+    font-weight:bold;
+    font-size:14px;
+  }
+  .dpadbtn:active{background:var(--red); color:var(--cream);}
+
+  #level8.fullscreen-level{
+    background:
+      radial-gradient(ellipse at 50% 120%, #ff6a00 0%, #7a1a00 35%, #1a0500 70%),
+      var(--ink);
+  }
+  .hellTitle{
+    font-family:Impact, 'Arial Black', sans-serif;
+    font-size:clamp(29px,5vw,48px);
+    text-align:center;
+    color:#ffb02e;
+    text-shadow:0 0 10px #ff4d00, 0 0 22px #ff4d00;
+    margin:0 0 6px;
+  }
+  .hellSub{
+    font-size:14px;
+    text-align:center;
+    color:#ffdca8;
+    font-weight:bold;
+    margin:0 0 6px;
+  }
+  .targetDate{
+    font-size:18px;
+    text-align:center;
+    color:var(--cream);
+    background:rgba(0,0,0,0.35);
+    border:2px solid #ffb02e;
+    border-radius:6px;
+    padding:8px 14px;
+    margin-bottom:18px;
+  }
+  .calWrap{
+    background:rgba(20,6,0,0.8);
+    border:2px solid #ffb02e;
+    border-radius:8px;
+    padding:16px;
+    max-width:360px;
+  }
+  .calHeader{
+    font-family:Impact, 'Arial Black', sans-serif;
+    font-size:24px;
+    color:var(--cream);
+    text-align:center;
+    margin-bottom:10px;
+  }
+  .calNavRow{
+    display:flex;
+    gap:6px;
+    margin-bottom:12px;
+  }
+  .calnavbtn{
+    flex:1;
+    padding:9px 2px;
+    border-radius:5px;
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    font-size:13px;
+    cursor:pointer;
+    border:2px solid var(--cream);
+    background:transparent;
+    color:var(--cream);
+  }
+  .calnavbtn.risky{
+    background:linear-gradient(180deg, #ff9d2e, #d6320a);
+    border-color:#ffb02e;
+    color:#2a0a00;
+    animation:flicker 1.6s infinite;
+  }
+  .weekRow, .dayGrid{
+    display:grid;
+    grid-template-columns:repeat(7, 1fr);
+    gap:4px;
+  }
+  .weekRow{
+    margin-bottom:4px;
+  }
+  .weekRow span{
+    font-size:11px;
+    text-align:center;
+    color:#ffdca8;
+    opacity:0.8;
+  }
+  .dayCell{
+    aspect-ratio:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,0.06);
+    color:var(--cream);
+    border-radius:4px;
+    font-size:14px;
+    cursor:pointer;
+  }
+  .dayCell:hover{background:rgba(255,176,46,0.35);}
+  .dayCell.empty{visibility:hidden; cursor:default;}
+  .dayCell.collapsed{visibility:hidden; pointer-events:none;}
+  .debrisDay{
+    position:fixed;
+    left:0; top:0;
+    width:34px; height:34px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,0.1);
+    color:var(--cream);
+    border-radius:4px;
+    font-size:15px;
+    z-index:800;
+    pointer-events:none;
+    will-change:transform;
+  }
+  .calWrap.quake{ animation:quakeKF 0.5s; }
+  @keyframes quakeKF{
+    10%,90%{ transform:translate3d(-1px,0,0); }
+    20%,80%{ transform:translate3d(3px,-2px,0) rotate(-1deg); }
+    30%,50%,70%{ transform:translate3d(-5px,2px,0) rotate(1deg); }
+    40%,60%{ transform:translate3d(5px,-2px,0) rotate(-1deg); }
+  }
+  .beacon{
+    position:fixed;
+    top:14px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    opacity:0.35;
+    transition:opacity .3s, box-shadow .3s;
+    z-index:600;
+  }
+  .beacon.left{left:16px; background:#ff2a2a;}
+  .beacon.right{right:16px; background:#2a6bff;}
+  .beacon.flash{
+    opacity:1;
+    box-shadow:0 0 22px 8px currentColor;
+  }
+  .flamesRow{
+    position:fixed;
+    bottom:0; left:0; right:0;
+    display:flex;
+    justify-content:space-around;
+    font-size:29px;
+    pointer-events:none;
+    opacity:0.8;
+  }
+  .flamesRow span{ animation:flicker 1.2s infinite; }
+  .flamesRow span:nth-child(2n){ animation-duration:1.5s; }
+  .flamesRow span:nth-child(3n){ animation-duration:0.9s; }
+  @keyframes flicker{
+    0%,100%{ opacity:1; transform:scale(1) rotate(0deg); }
+    50%{ opacity:0.7; transform:scale(1.08) rotate(-3deg); }
+  }  .fullscreen-level .win h2{
+    color:#ffffff;
+    text-shadow:0 2px 6px rgba(0,0,0,0.6);
+  }
+  .fullscreen-level .win p{
+    color:#ffffff;
   }
 </style>
 </head>
@@ -698,8 +969,9 @@
         <p class="fsprompt">Trova un sinonimo di <span id="synTarget">INUTILIZZABILE</span></p>
         <p class="fssub">⚠ scrivilo con la tastiera — se è troppo lungo, qualche lettera cade</p>
         <p class="synlist" id="synList"></p>
-        <div class="letterRow" id="letterRow"></div>
-        <p class="fshint">scrivi e premi <b>Invio</b> per confermare — <b>Backspace</b> per correggere</p>
+        <p class="fslabel">Scrivi qui la tua risposta:</p>
+        <input type="text" id="synInput" class="syninput" autocomplete="off" spellcheck="false" autocapitalize="off">
+        <p class="fshint">il campo è largo esattamente quanto la risposta più corta — premi <b>Invio</b> per confermare</p>
         <div class="trashwrap">
           <svg id="trashBinIcon" width="70" height="80" viewBox="0 0 70 80" xmlns="http://www.w3.org/2000/svg">
             <rect x="10" y="4" width="50" height="8" rx="2" fill="#F2ECD9"/>
@@ -718,6 +990,66 @@
         <button class="main" id="nextBtn7">livello 7 →</button>
       </div>
     </div>
+
+    <div id="level7" style="display:none" class="fullscreen-level">
+      <button class="exitbtn" id="exitLevel7">‹ livelli</button>
+      <div class="fs-inner" id="game7">
+        <p class="fsprompt">Raggiungi il campo <span id="mazeFieldName">UTENTE</span></p>
+        <p class="fssub">⚠ niente click: solo frecce, tastiera o D-pad</p>
+        <div class="mazeWrap">
+          <div class="mazeGrid" id="mazeGrid"></div>
+          <div class="mazePlayer" id="mazePlayer">●</div>
+          <div class="mazeTarget" id="mazeTarget">🚩</div>
+        </div>
+        <p class="fshint">muoviti con le frecce (o il D-pad, o uno swipe) — <b>Invio</b> o OK per confermare sul campo</p>
+        <div class="dpad">
+          <button class="dpadbtn" data-dir="up" type="button">▲</button>
+          <div class="dpad-mid">
+            <button class="dpadbtn" data-dir="left" type="button">◀</button>
+            <button class="dpadbtn dpad-ok" id="dpadOk" type="button">OK</button>
+            <button class="dpadbtn" data-dir="right" type="button">▶</button>
+          </div>
+          <button class="dpadbtn" data-dir="down" type="button">▼</button>
+        </div>
+      </div>
+      <div class="fs-inner win" id="win7" style="display:none">
+        <h2>LIVELLO 7 SUPERATO</h2>
+        <p>Ti sei fatto strada a suon di frecce fino al login. Nessun mouse è stato coinvolto.</p>
+        <button class="main" id="nextBtn8">livello 8 →</button>
+      </div>
+    </div>
+
+    <div id="level8" style="display:none" class="fullscreen-level">
+      <button class="exitbtn" id="exitLevel8">‹ livelli</button>
+      <div class="beacon left" id="beaconLeft"></div>
+      <div class="beacon right" id="beaconRight"></div>
+      <div class="fs-inner" id="game8">
+        <p class="hellTitle">🔥 CALENDAR HELL 🔥</p>
+        <p class="hellSub">⚠ niente salto diretto a mese/anno — solo frecce (e una scorciatoia proibita)</p>
+        <p class="targetDate">Trova questa data: <b id="targetDateLabel">14 marzo 2019</b></p>
+        <div class="calWrap">
+          <p class="calHeader" id="calHeader">MARZO 2019</p>
+          <div class="calNavRow">
+            <button class="calnavbtn risky" data-step="-12" type="button">🔥‹‹ anno</button>
+            <button class="calnavbtn" data-step="-1" type="button">‹ mese</button>
+            <button class="calnavbtn" data-step="1" type="button">mese ›</button>
+            <button class="calnavbtn risky" data-step="12" type="button">anno ››🔥</button>
+          </div>
+          <div class="weekRow">
+            <span>L</span><span>M</span><span>M</span><span>G</span><span>V</span><span>S</span><span>D</span>
+          </div>
+          <div class="dayGrid" id="dayGrid"></div>
+        </div>
+      </div>
+      <div class="fs-inner win" id="win8" style="display:none">
+        <h2>LIVELLO 8 SUPERATO</h2>
+        <p>Sei sopravvissuto al calendario infernale. I pompieri possono tornare in caserma.</p>
+        <button class="main" id="nextBtn9">livello 9 →</button>
+      </div>
+      <div class="flamesRow">
+        <span>🔥</span><span>🔥</span><span>🔥</span><span>🔥</span><span>🔥</span><span>🔥</span><span>🔥</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -727,7 +1059,7 @@
 <script>
 (function(){
   const TOTAL_LEVELS = 10;
-  const MAX_LEVEL_IMPLEMENTED = 6;
+  const MAX_LEVEL_IMPLEMENTED = 8;
   let currentLevel = 1;
 
   // ---- levelbar ----
@@ -754,7 +1086,9 @@
     if(n === 3) initLevel3();
     if(n === 4) initLevel4();
     if(n === 5) initLevel5();
-    if(n === 6) initLevel6();
+    if(n === 6){ initLevel6(); enterLevel6(); }
+    if(n === 7){ initLevel7(); enterLevel7(); }
+    if(n === 8){ initLevel8(); enterLevel8(); }
   }
 
   // navigazione libera: si può saltare avanti e indietro tra i livelli già costruiti
@@ -1297,9 +1631,11 @@
   }
 
   // ==================================================
-  // LIVELLO 6 — gioco dei sinonimi (effetto cestino, fullscreen)
+  // LIVELLO 6 — gioco dei sinonimi (input reale + gravità sulle lettere in eccesso)
   // ==================================================
   let level6Ready = false;
+  let fallingLetters = [];
+
   function initLevel6(){
     if(level6Ready) return;
     level6Ready = true;
@@ -1318,86 +1654,525 @@
     document.getElementById('synTarget').textContent = round.prompt;
     document.getElementById('synList').textContent = round.synonyms.join(' · ');
 
-    const letterRow = document.getElementById('letterRow');
-    let lettersArr = [];
-    let idCounter = 0;
+    const synInput = document.getElementById('synInput');
+    synInput.style.width = LIMIT + 'ch';
 
-    function render(){
-      letterRow.innerHTML = '';
-      lettersArr.forEach(entry=>{
-        const t = document.createElement('div');
-        t.className = 'letterTile';
-        t.textContent = entry.ch;
-        t.dataset.id = entry.id;
-        letterRow.appendChild(t);
-      });
-    }
-    render();
-
-    function flyToTrash(ch, fromRect){
+    // fisica a gravità per le lettere che escono dal confine del campo (come nel livello gravità)
+    const G = 0.45, REST = 0.5;
+    function spawnFallingLetter(ch){
+      const inputRect = synInput.getBoundingClientRect();
       const bin = document.getElementById('trashBinIcon');
       const binRect = bin.getBoundingClientRect();
-      const ghost = document.createElement('div');
-      ghost.className = 'fallingLetter';
-      ghost.textContent = ch;
-      ghost.style.left = fromRect.left + 'px';
-      ghost.style.top = fromRect.top + 'px';
-      document.body.appendChild(ghost);
-      requestAnimationFrame(()=>{
-        ghost.style.transform = 'translate(' + (binRect.left - fromRect.left) + 'px,' + (binRect.top - fromRect.top) + 'px) rotate(420deg) scale(.3)';
-        ghost.style.opacity = '0';
+      const el = document.createElement('div');
+      el.className = 'fallenLetter';
+      el.textContent = ch.toUpperCase();
+      document.body.appendChild(el);
+      fallingLetters.push({
+        el,
+        x: inputRect.right - 14 + Math.random()*10,
+        y: inputRect.top + inputRect.height/2 - 14,
+        vx: (Math.random()-0.5)*3,
+        vy: 0,
+        floorY: binRect.top + 10,
+        settled: false
       });
-      setTimeout(()=> ghost.remove(), 650);
     }
 
-    function addChar(ch){
-      lettersArr.push({ch, id: idCounter++});
-      render();
-      if(lettersArr.length > LIMIT){
-        const lastIdx = lettersArr.length - 1;
-        let idx;
-        do { idx = Math.floor(Math.random()*lettersArr.length); } while(idx === lastIdx && lettersArr.length > 1);
-        const removed = lettersArr[idx];
-        const tileEl = letterRow.querySelector('[data-id="'+removed.id+'"]');
-        const rect = tileEl ? tileEl.getBoundingClientRect() : null;
-        lettersArr.splice(idx, 1);
-        render();
-        if(rect) flyToTrash(removed.ch, rect);
+    function physicsLoop(){
+      fallingLetters.forEach(o=>{
+        if(o.settled) return;
+        o.vy += G;
+        o.x += o.vx;
+        o.y += o.vy;
+        if(o.y > o.floorY){
+          o.y = o.floorY;
+          o.vy *= -REST;
+          o.vx *= 0.9;
+          if(Math.abs(o.vy) < 1){ o.vy = 0; o.settled = true; }
+        }
+        o.el.style.transform = 'translate(' + o.x + 'px,' + o.y + 'px)';
+      });
+      requestAnimationFrame(physicsLoop);
+    }
+    requestAnimationFrame(physicsLoop);
+
+    // il campo non mostra mai più di LIMIT caratteri: quello che eccede
+    // cade dal confine del campo in poi, con la fisica qui sopra
+    synInput.addEventListener('input', ()=>{
+      const val = synInput.value;
+      if(val.length > LIMIT){
+        const overflow = val.slice(LIMIT);
+        synInput.value = val.slice(0, LIMIT);
+        overflow.split('').forEach(spawnFallingLetter);
       }
-    }
+    });
 
-    function removeLast(){
-      lettersArr.pop();
-      render();
-    }
+    synInput.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter') trySubmit();
+    });
 
     function trySubmit(){
-      const word = lettersArr.map(l=>l.ch).join('').toLowerCase().trim();
+      const word = synInput.value.toLowerCase().trim();
       if(word.length && synonymsNorm.includes(word)){
         document.getElementById('game6').style.display = 'none';
         document.getElementById('win6').style.display = 'flex';
       } else {
-        letterRow.classList.add('shake');
-        setTimeout(()=>letterRow.classList.remove('shake'), 300);
+        synInput.classList.add('shake');
+        setTimeout(()=>synInput.classList.remove('shake'), 300);
         toast(word ? '"' + word + '" non è tra i sinonimi buoni' : 'scrivi prima qualcosa');
       }
     }
-
-    function handleKey(e){
-      if(document.getElementById('level6').style.display === 'none') return;
-      if(e.key === 'Backspace'){ removeLast(); e.preventDefault(); }
-      else if(e.key === 'Enter'){ trySubmit(); }
-      else if(e.key.length === 1 && /[a-zA-ZàèéìòùÀÈÉÌÒÙ ]/.test(e.key)){ addChar(e.key.toLowerCase()); }
-    }
-    document.addEventListener('keydown', handleKey);
 
     document.getElementById('exitLevel6').addEventListener('click', ()=>{
       tryGoToLevel(5);
     });
 
     document.getElementById('nextBtn7').addEventListener('click', ()=>{
-      toast('livello 7 in arrivo — torna presto');
+      goToLevel(7);
     });
+  }
+
+  function enterLevel6(){
+    const synInput = document.getElementById('synInput');
+    if(synInput){
+      synInput.value = '';
+      setTimeout(()=> synInput.focus(), 50);
+    }
+    document.getElementById('game6').style.display = 'block';
+    document.getElementById('win6').style.display = 'none';
+    // ripulisce le lettere cadute da una visita precedente
+    fallingLetters.forEach(o=> o.el.remove());
+    fallingLetters = [];
+  }
+
+  // ==================================================
+  // LIVELLO 7 — CatchLogin: labirinto a frecce/D-pad/swipe, cross-device
+  // ==================================================
+  let level7Ready = false;
+  let resetLevel7 = null;
+
+  function initLevel7(){
+    if(level7Ready) return;
+    level7Ready = true;
+
+    const CELL = 44;
+    const fieldNames = ['UTENTE', 'PASSWORD'];
+    const sizes = [{cols:5, rows:5}, {cols:6, rows:5}];
+    let stage = 0;
+    let maze, playerPos, targetPos;
+
+    const grid = document.getElementById('mazeGrid');
+    const playerEl = document.getElementById('mazePlayer');
+    const targetEl = document.getElementById('mazeTarget');
+    const fieldNameEl = document.getElementById('mazeFieldName');
+
+    // labirinto generato ad albero (randomized DFS): sempre risolvibile per costruzione
+    function generateMaze(cols, rows){
+      const cells = [];
+      for(let r=0;r<rows;r++){
+        cells.push([]);
+        for(let c=0;c<cols;c++) cells[r].push({n:false,e:false,s:false,w:false,visited:false});
+      }
+      const dirs = [
+        {name:'n', dr:-1, dc:0, opp:'s'},
+        {name:'e', dr:0, dc:1, opp:'w'},
+        {name:'s', dr:1, dc:0, opp:'n'},
+        {name:'w', dr:0, dc:-1, opp:'e'}
+      ];
+      const stack = [{r:0,c:0}];
+      cells[0][0].visited = true;
+      while(stack.length){
+        const cur = stack[stack.length-1];
+        const options = shuffle(dirs).filter(d=>{
+          const nr=cur.r+d.dr, nc=cur.c+d.dc;
+          return nr>=0 && nr<rows && nc>=0 && nc<cols && !cells[nr][nc].visited;
+        });
+        if(options.length === 0){ stack.pop(); continue; }
+        const d = options[0];
+        const nr=cur.r+d.dr, nc=cur.c+d.dc;
+        cells[cur.r][cur.c][d.name] = true;
+        cells[nr][nc][d.opp] = true;
+        cells[nr][nc].visited = true;
+        stack.push({r:nr, c:nc});
+      }
+      return cells;
+    }
+
+    function renderMaze(cols, rows){
+      grid.innerHTML = '';
+      grid.style.gridTemplateColumns = 'repeat(' + cols + ', ' + CELL + 'px)';
+      grid.style.gridTemplateRows = 'repeat(' + rows + ', ' + CELL + 'px)';
+      for(let r=0;r<rows;r++){
+        for(let c=0;c<cols;c++){
+          const cell = maze[r][c];
+          const div = document.createElement('div');
+          div.className = 'mazeCell' +
+            (cell.n?' open-n':'') + (cell.e?' open-e':'') + (cell.s?' open-s':'') + (cell.w?' open-w':'');
+          div.style.width = CELL+'px';
+          div.style.height = CELL+'px';
+          grid.appendChild(div);
+        }
+      }
+    }
+
+    function placeVisuals(){
+      playerEl.style.transform = 'translate(' + (playerPos.c*CELL) + 'px,' + (playerPos.r*CELL) + 'px)';
+      targetEl.style.transform = 'translate(' + (targetPos.c*CELL) + 'px,' + (targetPos.r*CELL) + 'px)';
+    }
+
+    function setupStage(){
+      const {cols, rows} = sizes[stage];
+      maze = generateMaze(cols, rows);
+      playerPos = {r:0, c:0};
+      targetPos = {r:rows-1, c:cols-1};
+      fieldNameEl.textContent = fieldNames[stage];
+      renderMaze(cols, rows);
+      placeVisuals();
+    }
+
+    function move(dir){
+      const cell = maze[playerPos.r][playerPos.c];
+      if(dir === 'up' && cell.n) playerPos.r--;
+      else if(dir === 'down' && cell.s) playerPos.r++;
+      else if(dir === 'left' && cell.w) playerPos.c--;
+      else if(dir === 'right' && cell.e) playerPos.c++;
+      else {
+        playerEl.classList.add('shake');
+        setTimeout(()=>playerEl.classList.remove('shake'), 200);
+        return;
+      }
+      placeVisuals();
+    }
+
+    function confirmField(){
+      if(playerPos.r === targetPos.r && playerPos.c === targetPos.c){
+        const doneField = fieldNames[stage];
+        stage++;
+        if(stage >= fieldNames.length){
+          document.getElementById('game7').style.display = 'none';
+          document.getElementById('win7').style.display = 'flex';
+        } else {
+          toast('campo ' + doneField + ' raggiunto!');
+          setupStage();
+        }
+      } else {
+        toast('non sei ancora sul campo giusto');
+      }
+    }
+
+    function keyHandler(e){
+      if(document.getElementById('level7').style.display === 'none') return;
+      if(e.key === 'ArrowUp'){ move('up'); e.preventDefault(); }
+      else if(e.key === 'ArrowDown'){ move('down'); e.preventDefault(); }
+      else if(e.key === 'ArrowLeft'){ move('left'); e.preventDefault(); }
+      else if(e.key === 'ArrowRight'){ move('right'); e.preventDefault(); }
+      else if(e.key === 'Enter'){ confirmField(); }
+    }
+    document.addEventListener('keydown', keyHandler);
+
+    // D-pad touch/mouse: stessa funzione move(), utilizzabile su qualunque dispositivo
+    document.querySelectorAll('.dpadbtn[data-dir]').forEach(b=>{
+      b.addEventListener('click', ()=> move(b.dataset.dir));
+    });
+    document.getElementById('dpadOk').addEventListener('click', confirmField);
+
+    // swipe: scorciatoia comoda su schermi piccoli, stessa funzione move()
+    const mazeWrap = document.querySelector('.mazeWrap');
+    let touchStartX = 0, touchStartY = 0;
+    mazeWrap.addEventListener('touchstart', (e)=>{
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, {passive:true});
+    mazeWrap.addEventListener('touchend', (e)=>{
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if(Math.max(Math.abs(dx), Math.abs(dy)) < 24) return;
+      if(Math.abs(dx) > Math.abs(dy)) move(dx > 0 ? 'right' : 'left');
+      else move(dy > 0 ? 'down' : 'up');
+    }, {passive:true});
+
+    resetLevel7 = function(){
+      stage = 0;
+      document.getElementById('game7').style.display = 'block';
+      document.getElementById('win7').style.display = 'none';
+      setupStage();
+    };
+    resetLevel7();
+
+    document.getElementById('exitLevel7').addEventListener('click', ()=> tryGoToLevel(6));
+    document.getElementById('nextBtn8').addEventListener('click', ()=>{
+      goToLevel(8);
+    });
+  }
+
+  function enterLevel7(){
+    if(resetLevel7) resetLevel7();
+  }
+
+  // ==================================================
+  // LIVELLO 8 — Calendar Hell: solo frecce mese/anno, fiamme e sirene
+  // ==================================================
+  let level8Ready = false;
+  let audioCtx = null;
+  let fallingDays = [];
+
+  function getAudioCtx(){
+    if(!audioCtx){
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if(AC) audioCtx = new AC();
+    }
+    if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  }
+
+  function playSiren(){
+    try{
+      const ctx = getAudioCtx();
+      if(!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.connect(gain).connect(ctx.destination);
+      const now = ctx.currentTime;
+      osc.frequency.setValueAtTime(650, now);
+      osc.frequency.linearRampToValueAtTime(880, now + 0.3);
+      osc.frequency.linearRampToValueAtTime(650, now + 0.6);
+      osc.frequency.linearRampToValueAtTime(880, now + 0.9);
+      gain.gain.setValueAtTime(0.06, now);
+      gain.gain.linearRampToValueAtTime(0.0001, now + 1.1);
+      osc.start(now);
+      osc.stop(now + 1.15);
+    } catch(e){ /* audio non disponibile, pace */ }
+  }
+
+  function flashBeacons(){
+    const l = document.getElementById('beaconLeft');
+    const r = document.getElementById('beaconRight');
+    l.classList.add('flash'); r.classList.add('flash');
+    setTimeout(()=>{ l.classList.remove('flash'); r.classList.remove('flash'); }, 550);
+  }
+
+  // debris: i giorni che crollano cadono davvero, stessa fisica a gravità degli altri livelli
+  function spawnFallingDay(text, rect){
+    const el = document.createElement('div');
+    el.className = 'debrisDay';
+    el.textContent = text;
+    document.body.appendChild(el);
+    fallingDays.push({
+      el,
+      x: rect.left,
+      y: rect.top,
+      vx: (Math.random()-0.5)*2,
+      vy: 0,
+      floorY: window.innerHeight - 40,
+      settled: false
+    });
+  }
+  function debrisLoop(){
+    fallingDays.forEach(o=>{
+      if(o.settled) return;
+      o.vy += 0.5;
+      o.x += o.vx;
+      o.y += o.vy;
+      if(o.y > o.floorY){
+        o.y = o.floorY;
+        o.vy *= -0.4;
+        if(Math.abs(o.vy) < 1){ o.vy = 0; o.settled = true; }
+      }
+      o.el.style.transform = 'translate(' + o.x + 'px,' + o.y + 'px)';
+    });
+    requestAnimationFrame(debrisLoop);
+  }
+  requestAnimationFrame(debrisLoop);
+
+  function initLevel8(){
+    if(level8Ready) return;
+    level8Ready = true;
+
+    const monthNames = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+    const flavorLines = [
+      'un altro mese scivola nell\'inferno',
+      'il diavolo tiene il calendario, non tu',
+      'ancora un click, ancora fiamme',
+      'da queste parti gli anni bisestili fanno più male'
+    ];
+    let flavorClicks = 0;
+    let collapseTimer = null;
+
+    let viewYear, viewMonth, target;
+
+    function daysInMonth(y, m){ return new Date(y, m+1, 0).getDate(); }
+
+    function pickTarget(){
+      const today = new Date();
+      const sign = Math.random() < 0.5 ? -1 : 1;
+      const offset = sign * (24 + Math.floor(Math.random()*49)); // 2-6 anni di distanza
+      const base = new Date(today.getFullYear(), today.getMonth() + offset, 1);
+      const y = base.getFullYear(), m = base.getMonth();
+      const d = 1 + Math.floor(Math.random() * daysInMonth(y, m));
+      return {day:d, month:m, year:y};
+    }
+
+    function renderHeader(){
+      document.getElementById('calHeader').textContent = monthNames[viewMonth].toUpperCase() + ' ' + viewYear;
+    }
+
+    // ogni tanto (mai il giorno bersaglio) un giorno crolla e cade con gravità
+    function maybeCollapseRandomDay(){
+      if(document.getElementById('level8').style.display === 'none') return;
+      const grid = document.getElementById('dayGrid');
+      const isTargetMonth = (viewMonth === target.month && viewYear === target.year);
+      const cells = Array.from(grid.querySelectorAll('.dayCell:not(.empty):not(.collapsed)'))
+        .filter(c => !(isTargetMonth && parseInt(c.textContent,10) === target.day));
+      if(!cells.length) return;
+      const cell = cells[Math.floor(Math.random()*cells.length)];
+      cell.classList.add('shake');
+      setTimeout(()=>{
+        if(!cell.isConnected || cell.classList.contains('collapsed')) return;
+        const rect = cell.getBoundingClientRect();
+        spawnFallingDay(cell.textContent, rect);
+        cell.classList.add('collapsed');
+        cell.classList.remove('shake');
+      }, 250);
+    }
+
+    function renderDays(){
+      const grid = document.getElementById('dayGrid');
+      grid.innerHTML = '';
+      const firstWeekday = (new Date(viewYear, viewMonth, 1).getDay() + 6) % 7; // lunedì = 0
+      const total = daysInMonth(viewYear, viewMonth);
+      for(let i=0;i<firstWeekday;i++){
+        const empty = document.createElement('div');
+        empty.className = 'dayCell empty';
+        grid.appendChild(empty);
+      }
+      for(let d=1; d<=total; d++){
+        const cell = document.createElement('div');
+        cell.className = 'dayCell';
+        cell.textContent = d;
+        cell.addEventListener('click', ()=> onDayClick(d));
+        grid.appendChild(cell);
+      }
+      clearInterval(collapseTimer);
+      collapseTimer = setInterval(maybeCollapseRandomDay, 2500);
+    }
+
+    function onDayClick(d){
+      if(d === target.day && viewMonth === target.month && viewYear === target.year){
+        clearInterval(collapseTimer);
+        document.getElementById('game8').style.display = 'none';
+        document.getElementById('win8').style.display = 'flex';
+      } else {
+        toast('non è il giorno giusto — controlla anche mese e anno');
+      }
+    }
+
+    // suggerimento del diavolo: a volte vero, a volte fuorviante (mai esagerato: solo la direzione)
+    function showDevilHint(){
+      const monthsAway = (target.year - viewYear)*12 + (target.month - viewMonth);
+      if(monthsAway === 0){
+        toast('😈 suggerimento del diavolo: sei nel mese giusto, cerca bene il giorno');
+        return;
+      }
+      const trueDir = monthsAway > 0 ? 'avanti' : 'indietro';
+      const shownDir = Math.random() < 0.5 ? trueDir : (trueDir === 'avanti' ? 'indietro' : 'avanti');
+      toast('😈 suggerimento del diavolo (non fidarti troppo): prova ad andare ' + shownDir);
+    }
+
+    function triggerQuakeMaybe(){
+      if(document.getElementById('level8').style.display === 'none') return;
+      if(Math.random() < 0.5){
+        const wrap = document.querySelector('#level8 .calWrap');
+        wrap.classList.add('quake');
+        setTimeout(()=>wrap.classList.remove('quake'), 500);
+        toast('🌋 scossa di terremoto!');
+      }
+    }
+    setInterval(triggerQuakeMaybe, 5000);
+
+    function changeMonth(step){
+      const isYearJump = Math.abs(step) === 12;
+
+      if(isYearJump){
+        // il salto anno è sempre incerto: normale, invertito o disattivato — a caso ogni volta
+        const roll = Math.random();
+        let actualStep;
+        let outcomeMsg;
+        if(roll < 1/3){
+          actualStep = step;
+          outcomeMsg = '🔥 il salto ha funzionato come previsto';
+        } else if(roll < 2/3){
+          actualStep = -step;
+          outcomeMsg = '🔥 il salto si è invertito da solo!';
+        } else {
+          actualStep = 0;
+          outcomeMsg = '🔥 il salto si è disattivato da solo, niente da fare';
+        }
+        flashBeacons();
+        playSiren();
+        toast(outcomeMsg);
+        if(actualStep === 0) return;
+        applyStep(actualStep);
+        return;
+      }
+
+      // i comandi normali (mese) si inceppano nel fuoco un po' meno di una volta su quattro
+      if(Math.random() < 0.25){
+        const btn = document.querySelector('.calnavbtn[data-step="'+step+'"]');
+        if(btn){ btn.classList.add('shake'); setTimeout(()=>btn.classList.remove('shake'), 250); }
+        toast('🔥 comando bloccato dalle fiamme, riprova');
+        return;
+      }
+      if(Math.random() < 0.25) playSiren();
+      applyStep(step);
+    }
+
+    function applyStep(step){
+      let m = viewMonth + step;
+      let y = viewYear;
+      while(m < 0){ m += 12; y--; }
+      while(m > 11){ m -= 12; y++; }
+      viewMonth = m; viewYear = y;
+      renderHeader();
+      renderDays();
+
+      flavorClicks++;
+      if(flavorClicks % 5 === 0){
+        showDevilHint();
+      } else if(flavorClicks % 8 === 3){
+        toast(flavorLines[Math.floor(Math.random()*flavorLines.length)]);
+      }
+    }
+
+    document.querySelectorAll('.calnavbtn').forEach(btn=>{
+      btn.addEventListener('click', ()=> changeMonth(parseInt(btn.dataset.step, 10)));
+    });
+
+    resetLevel8 = function(){
+      target = pickTarget();
+      const today = new Date();
+      viewYear = today.getFullYear();
+      viewMonth = today.getMonth();
+      document.getElementById('targetDateLabel').textContent =
+        target.day + ' ' + monthNames[target.month] + ' ' + target.year;
+      document.getElementById('game8').style.display = 'block';
+      document.getElementById('win8').style.display = 'none';
+      renderHeader();
+      renderDays();
+      fallingDays.forEach(o=> o.el.remove());
+      fallingDays = [];
+    };
+    resetLevel8();
+
+    document.getElementById('exitLevel8').addEventListener('click', ()=> tryGoToLevel(7));
+    document.getElementById('nextBtn9').addEventListener('click', ()=>{
+      toast('livello 9 in arrivo — torna presto');
+    });
+  }
+
+  let resetLevel8 = null;
+  function enterLevel8(){
+    if(resetLevel8) resetLevel8();
   }
 })();
 </script>
