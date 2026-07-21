@@ -1,2 +1,2 @@
 # unusable
-unusable è unusable, ricorsivamente. 
+unusable is unusable (recursively). 
