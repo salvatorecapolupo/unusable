@@ -255,6 +255,322 @@
     color:var(--teal);
     font-weight:bold;
   }
+
+  .navrow{
+    display:flex;
+    gap:8px;
+    margin-bottom:16px;
+  }
+  .navbtn{
+    flex:1;
+    background:transparent;
+    border:2px solid var(--cream);
+    color:var(--cream);
+    opacity:0.75;
+    font-family:'Courier New', monospace;
+    font-size:11px;
+    padding:6px;
+    border-radius:4px;
+    cursor:pointer;
+  }
+  .navbtn:hover{opacity:1;}
+  .piece{cursor:pointer;}
+
+  .crosshair{
+    position:absolute;
+    width:34px;
+    height:34px;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:5;
+    display:none;
+  }
+
+  .translatebox{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    min-height:190px;
+    align-content:flex-start;
+    background:
+      radial-gradient(circle, var(--ink) 1px, transparent 1px) 0 0/16px 16px,
+      var(--teal-2);
+    background-color:#dcd4b8;
+    border-radius:5px;
+    padding:14px;
+    margin-bottom:10px;
+    border:2px solid var(--ink);
+  }
+  .tbtn{
+    flex:1 1 40%;
+    min-width:120px;
+    padding:14px 8px;
+    border:none;
+    border-radius:6px;
+    background:var(--teal-2);
+    color:var(--cream);
+    font-weight:bold;
+    font-size:13px;
+    cursor:pointer;
+    box-shadow:2px 2px 0 rgba(0,0,0,0.3);
+    transition:transform .08s;
+  }
+  .tbtn:active{transform:scale(.95);}
+  .tbtn.selected{
+    background:var(--red);
+    box-shadow:none;
+    transform:scale(.97);
+  }
+
+  .shake{animation:shake .3s;}
+
+  .phonebox{
+    background:
+      radial-gradient(circle, var(--ink) 1px, transparent 1px) 0 0/16px 16px,
+      var(--teal-2);
+    background-color:#dcd4b8;
+    border-radius:5px;
+    padding:16px;
+    margin-bottom:10px;
+    border:2px solid var(--ink);
+  }
+  .phonevalue{
+    background:var(--ink);
+    color:var(--mustard);
+    font-size:22px;
+    letter-spacing:3px;
+    text-align:center;
+    padding:12px;
+    border-radius:4px;
+    margin-bottom:14px;
+    font-family:'Courier New', monospace;
+  }
+  input[type=range].rangeInput{
+    width:100%;
+    margin:6px 0 14px;
+    accent-color:var(--red);
+  }
+  .modeRow{
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
+  }
+  .modebtn{
+    flex:1;
+    padding:8px 4px;
+    border:2px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    border-radius:4px;
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    font-size:11px;
+    cursor:pointer;
+  }
+  .modebtn.active{background:var(--mustard);}
+  .anglelabel{
+    font-size:11px;
+    display:block;
+    margin-bottom:2px;
+    color:var(--teal);
+    font-weight:bold;
+  }
+  .distanceline{
+    font-size:12px;
+    text-align:center;
+    font-weight:bold;
+    margin:2px 0 0;
+    color:var(--teal);
+  }
+  .proxlabel{
+    font-size:13px;
+    text-align:center;
+    font-weight:bold;
+    margin:0 0 4px;
+    color:var(--ink);
+  }
+  .proxbar-outer{
+    width:100%;
+    height:10px;
+    background:var(--ink);
+    border-radius:5px;
+    overflow:hidden;
+    margin-bottom:4px;
+  }
+  .proxbar-inner{
+    height:100%;
+    width:0%;
+    background:var(--red);
+    transition:width .2s ease, background .2s ease;
+  }
+  input[type=range].rangeInput.slim{
+    max-width:230px;
+    display:block;
+    margin:6px auto 14px;
+    transition:width .5s ease-in-out, transform .2s ease;
+  }
+  .nudgeRow{
+    display:flex;
+    gap:4px;
+    margin-bottom:12px;
+  }
+  .nudgebtn{
+    flex:1;
+    padding:8px 2px;
+    border:2px solid var(--ink);
+    background:var(--cream);
+    color:var(--ink);
+    border-radius:4px;
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    font-size:11px;
+    cursor:pointer;
+  }
+  .nudgebtn:active{background:var(--mustard);}
+
+  #level6.fullscreen-level{
+    position:fixed;
+    inset:0;
+    z-index:500;
+    background:var(--teal);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
+    color:var(--cream);
+    overflow:auto;
+  }
+  .fs-inner{
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:70px 20px 40px;
+  }
+  .exitbtn{
+    position:fixed;
+    top:16px;
+    left:16px;
+    z-index:600;
+    background:transparent;
+    border:2px solid var(--cream);
+    color:var(--cream);
+    padding:8px 14px;
+    border-radius:4px;
+    font-family:'Courier New', monospace;
+    font-size:12px;
+    cursor:pointer;
+  }
+  .fsprompt{
+    font-family:Impact, 'Arial Black', sans-serif;
+    font-size:clamp(24px,5vw,42px);
+    color:var(--mustard);
+    text-align:center;
+    margin:0 0 4px;
+  }
+  .fssub{
+    font-size:13px;
+    text-align:center;
+    color:var(--red);
+    font-weight:bold;
+    margin:0 0 18px;
+  }
+  .synlist{
+    font-size:13px;
+    opacity:0.85;
+    text-align:center;
+    max-width:640px;
+    line-height:1.7;
+    margin-bottom:22px;
+  }
+  .letterRow{
+    display:flex;
+    gap:8px;
+    min-height:64px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+    max-width:700px;
+  }
+  .letterTile{
+    width:44px;
+    height:54px;
+    background:var(--cream);
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    font-weight:bold;
+    border-radius:6px;
+    box-shadow:3px 3px 0 rgba(0,0,0,0.4);
+    font-family:'Courier New', monospace;
+  }
+  .synInput{
+    font-size:28px;
+    font-family:'Courier New', monospace;
+    text-align:center;
+    letter-spacing:4px;
+    padding:14px 18px;
+    border-radius:6px;
+    border:3px solid var(--mustard);
+    background:var(--cream);
+    color:var(--ink);
+    width:min(90vw,420px);
+    outline:none;
+    margin-bottom:6px;
+  }
+  .synInput:focus{
+    border-color:var(--red);
+  }
+  .fieldhint{
+    font-size:12px;
+    opacity:0.8;
+    margin:0 0 18px;
+  }
+  .fallingLetterG{
+    position:fixed;
+    width:36px;
+    height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--cream);
+    color:var(--red);
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    font-size:20px;
+    border-radius:5px;
+    box-shadow:2px 2px 0 rgba(0,0,0,0.4);
+    z-index:2000;
+    pointer-events:none;
+  }
+  .fshint{
+    font-size:13px;
+    opacity:0.85;
+    margin:6px 0 30px;
+    text-align:center;
+    max-width:480px;
+  }
+  .trashwrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .trashlabel{
+    font-size:11px;
+    opacity:0.7;
+  }
+  .fallingLetter{
+    position:fixed;
+    font-size:22px;
+    font-weight:bold;
+    color:var(--red);
+    z-index:2000;
+    pointer-events:none;
+    transition:transform .6s ease-in, opacity .6s ease-in;
+  }
 </style>
 </head>
 <body>
@@ -306,10 +622,10 @@
     <div id="level3" style="display:none">
       <div id="game3">
         <h1>Prendi il tasto INVIA</h1>
-        <p class="sub">⚠ più lo becchi, più scappa veloce</p>
+        <p class="sub">⚠ velocità a caso — più è lento, più vale</p>
         <div class="bouncebox" id="bouncebox"></div>
-        <p class="progress3" id="progress3">colpito: 0 / 5</p>
-        <div class="hint">clicca il tasto rosso mentre rimbalza — niente scorciatoie</div>
+        <p class="progress3" id="progress3">🎯 punteggio: 0 · colpi: 0 / 4</p>
+        <div class="hint">è un gioco: mira col mirino, funziona anche col dito</div>
       </div>
       <div class="win" id="win3">
         <h2>LIVELLO 3 SUPERATO</h2>
@@ -317,25 +633,115 @@
         <button class="main" id="nextBtn3">livello 4 →</button>
       </div>
     </div>
+
+    <div id="level4" style="display:none">
+      <div id="game4">
+        <h1>Trova le parole scritte male</h1>
+        <p class="sub">⚠ solo 3 o 4 su 10 sono sbagliate</p>
+        <div class="translatebox" id="translatebox"></div>
+        <p class="progress3" id="progress4">seleziona le parole con l'errore, poi conferma</p>
+        <div class="actions">
+          <button class="main" id="confirmWords">conferma selezione</button>
+        </div>
+        <div class="hint">clicca per selezionare/deselezionare — niente fretta, non cambia da solo</div>
+      </div>
+      <div class="win" id="win4">
+        <h2>LIVELLO 4 SUPERATO</h2>
+        <p>Hai capito il traduttore meglio di lui stesso. Le bandiere restano un mistero.</p>
+        <button class="main" id="nextBtn5">livello 5 →</button>
+      </div>
+    </div>
+
+    <div id="level5" style="display:none">
+      <div id="game5">
+        <h1>Componi il numero</h1>
+        <p class="sub">⚠ risoluzione bassissima, buona fortuna</p>
+        <p class="hint">bersaglio: <b id="targetDisplay">333 000 0000</b></p>
+        <p class="hint">se lo slider non basta, usa i pulsanti di precisione per centrare il bersaglio</p>
+        <div class="phonebox">
+          <div class="phonevalue" id="phoneValue">300 000 0000</div>
+          <input type="range" class="rangeInput slim" id="mainSlider" min="3000000000" max="3999999999" step="1" value="3500000000" title="Suggerimento: usa le frecce della tastiera per cambiare il valore">
+          <div class="modeRow">
+            <button class="modebtn active" data-mode="base" type="button">Base</button>
+            <button class="modebtn" data-mode="avanzata" type="button">Avanzata</button>
+          </div>
+          <div id="advancedControls" style="display:none">
+            <label class="anglelabel">velocità di deriva (inclina lo slider)</label>
+            <input type="range" class="rangeInput" id="angleSlider" min="-10" max="10" step="0.02" value="0">
+          </div>
+          <div class="nudgeRow">
+            <button class="nudgebtn" type="button" data-d="-1000000">-1M</button>
+            <button class="nudgebtn" type="button" data-d="-10000">-10k</button>
+            <button class="nudgebtn" type="button" data-d="-100">-100</button>
+            <button class="nudgebtn" type="button" data-d="100">+100</button>
+            <button class="nudgebtn" type="button" data-d="10000">+10k</button>
+            <button class="nudgebtn" type="button" data-d="1000000">+1M</button>
+          </div>
+          <p class="proxlabel" id="proxLabel">lontano</p>
+          <div class="proxbar-outer"><div class="proxbar-inner" id="proxBar"></div></div>
+          <p class="distanceline" id="distanceLine">scarto: —</p>
+        </div>
+        <div class="actions">
+          <button class="main" id="confirmPhone">conferma numero</button>
+        </div>
+      </div>
+      <div class="win" id="win5">
+        <h2>LIVELLO 5 SUPERATO</h2>
+        <p>Hai composto un numero italiano con uno slider. Rispetto vero.</p>
+        <button class="main" id="nextBtn6">livello 6 →</button>
+      </div>
+    </div>
+
+    <div id="level6" style="display:none" class="fullscreen-level">
+      <button class="exitbtn" id="exitLevel6">‹ livelli</button>
+      <div class="fs-inner" id="game6">
+        <p class="fsprompt">Trova un sinonimo di <span id="synTarget">INUTILIZZABILE</span></p>
+        <p class="fssub">⚠ scrivilo con la tastiera — se è troppo lungo, qualche lettera cade</p>
+        <p class="synlist" id="synList"></p>
+        <div class="letterRow" id="letterRow"></div>
+        <p class="fshint">scrivi e premi <b>Invio</b> per confermare — <b>Backspace</b> per correggere</p>
+        <div class="trashwrap">
+          <svg id="trashBinIcon" width="70" height="80" viewBox="0 0 70 80" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="4" width="50" height="8" rx="2" fill="#F2ECD9"/>
+            <rect x="26" y="0" width="18" height="6" rx="2" fill="#F2ECD9"/>
+            <path d="M14 16 L18 76 Q18 80 22 80 L48 80 Q52 80 52 76 L56 16 Z" fill="none" stroke="#F2ECD9" stroke-width="4"/>
+            <line x1="27" y1="26" x2="28" y2="70" stroke="#F2ECD9" stroke-width="3"/>
+            <line x1="35" y1="26" x2="35" y2="70" stroke="#F2ECD9" stroke-width="3"/>
+            <line x1="43" y1="26" x2="42" y2="70" stroke="#F2ECD9" stroke-width="3"/>
+          </svg>
+          <span class="trashlabel">le lettere di troppo finiscono qui</span>
+        </div>
+      </div>
+      <div class="fs-inner win" id="win6" style="display:none">
+        <h2>LIVELLO 6 SUPERATO</h2>
+        <p>Hai trovato il sinonimo giusto senza perdere (troppe) lettere.</p>
+        <button class="main" id="nextBtn7">livello 7 →</button>
+      </div>
+    </div>
   </div>
 </div>
+
 
 <div class="toast" id="toast"></div>
 
 <script>
 (function(){
   const TOTAL_LEVELS = 10;
+  const MAX_LEVEL_IMPLEMENTED = 6;
+  let currentLevel = 1;
 
   // ---- levelbar ----
   const levelbar = document.getElementById('levelbar');
   for(let i=0;i<TOTAL_LEVELS;i++){
     const p = document.createElement('div');
     p.className = 'piece';
+    p.addEventListener('click', ()=> tryGoToLevel(i+1));
     levelbar.appendChild(p);
   }
   const levelLabel = document.getElementById('levelLabel');
 
   function goToLevel(n){
+    currentLevel = n;
     document.querySelectorAll('.card > div[id^="level"]').forEach(el=>{
       el.style.display = 'none';
     });
@@ -346,7 +752,24 @@
     }
     if(n === 2) initLevel2();
     if(n === 3) initLevel3();
+    if(n === 4) initLevel4();
+    if(n === 5) initLevel5();
+    if(n === 6) initLevel6();
   }
+
+  // navigazione libera: si può saltare avanti e indietro tra i livelli già costruiti
+  function tryGoToLevel(n){
+    if(n < 1 || n > TOTAL_LEVELS) return;
+    if(n > MAX_LEVEL_IMPLEMENTED){
+      toast('livello ' + n + ' in arrivo — torna presto');
+      return;
+    }
+    goToLevel(n);
+  }
+
+  document.getElementById('prevLevelBtn').addEventListener('click', ()=> tryGoToLevel(currentLevel - 1));
+  document.getElementById('nextLevelBtn').addEventListener('click', ()=> tryGoToLevel(currentLevel + 1));
+
   goToLevel(1);
 
   // ---- toast ----
@@ -552,7 +975,7 @@
   }
 
   // ==================================================
-  // LIVELLO 3 — bounce puro, difficoltà crescente
+  // LIVELLO 3 — bounce, velocità random, punteggio inverso
   // ==================================================
   let level3Ready = false;
   function initLevel3(){
@@ -562,31 +985,63 @@
     const box = document.getElementById('bouncebox');
     const progress3 = document.getElementById('progress3');
     const BOX_W = box.clientWidth, BOX_H = box.clientHeight;
-    const REQUIRED_HITS = 5;
+    const REQUIRED_HITS = 4;
+    const SPEED_MIN = 1.6, SPEED_MAX = 6.5;
     const colors = ['#D64545', '#1B4B43', '#E8B33D', '#123832'];
+    const w = 90, h = 44; // dimensione fissa: niente rimpicciolimento, è un gioco
+
+    box.style.cursor = 'none';
+    box.style.touchAction = 'none';
+    box.style.position = 'relative';
 
     const btn = document.createElement('button');
     btn.className = 'dvdbtn';
     btn.type = 'button';
     btn.textContent = 'INVIA';
-    box.appendChild(btn);
-
-    let w = 90, h = 44;
     btn.style.width = w+'px';
     btn.style.height = h+'px';
+    box.appendChild(btn);
+
+    // mirino: segue mouse e dito, non blocca i click (pointer-events:none)
+    const crosshair = document.createElement('div');
+    crosshair.className = 'crosshair';
+    crosshair.innerHTML = '<svg width="34" height="34" viewBox="0 0 34 34">' +
+      '<circle cx="17" cy="17" r="11" fill="none" stroke="#D64545" stroke-width="2"/>' +
+      '<line x1="17" y1="0" x2="17" y2="7" stroke="#D64545" stroke-width="2"/>' +
+      '<line x1="17" y1="27" x2="17" y2="34" stroke="#D64545" stroke-width="2"/>' +
+      '<line x1="0" y1="17" x2="7" y2="17" stroke="#D64545" stroke-width="2"/>' +
+      '<line x1="27" y1="17" x2="34" y2="17" stroke="#D64545" stroke-width="2"/>' +
+      '</svg>';
+    box.appendChild(crosshair);
+
+    function updateCrosshair(clientX, clientY){
+      const r = box.getBoundingClientRect();
+      crosshair.style.left = (clientX - r.left) + 'px';
+      crosshair.style.top = (clientY - r.top) + 'px';
+      crosshair.style.display = 'block';
+    }
+    box.addEventListener('pointermove', e => updateCrosshair(e.clientX, e.clientY));
+    box.addEventListener('pointerdown', e => updateCrosshair(e.clientX, e.clientY));
+    box.addEventListener('pointerleave', () => { crosshair.style.display = 'none'; });
+
+    function randomSpeed(){ return SPEED_MIN + Math.random()*(SPEED_MAX - SPEED_MIN); }
+
+    function launch(speed){
+      const ang = Math.random()*Math.PI*2;
+      state.vx = speed * Math.cos(ang);
+      state.vy = speed * Math.sin(ang);
+    }
 
     const state = {
       x: Math.random()*(BOX_W-w),
       y: Math.random()*(BOX_H-h),
-      speed: 3.2,
-      angle: Math.PI/4 + Math.random()*0.6,
-      hits: 0
+      hits: 0,
+      score: 0
     };
-    state.vx = state.speed * Math.cos(state.angle);
-    state.vy = state.speed * Math.sin(state.angle) * (Math.random()<0.5?1:-1);
+    launch(randomSpeed());
 
     function bounceKick(){
-      // ad ogni rimbalzo sul muro: colore diverso, leggera variazione d'angolo
+      // ad ogni rimbalzo sul muro: colore diverso, leggera variazione d'angolo, stessa velocità
       btn.style.background = colors[Math.floor(Math.random()*colors.length)];
       const jitter = (Math.random()-0.5)*0.5;
       const speed = Math.hypot(state.vx, state.vy);
@@ -611,21 +1066,16 @@
 
     btn.addEventListener('click', (e)=>{
       e.stopPropagation();
+      const speed = Math.hypot(state.vx, state.vy);
+      // punteggio inversamente proporzionale alla velocità: più è lento, più punti vale
+      const points = Math.max(1, Math.round(20 - (speed - SPEED_MIN) / (SPEED_MAX - SPEED_MIN) * 17));
       state.hits++;
-      progress3.textContent = 'colpito: ' + state.hits + ' / ' + REQUIRED_HITS;
+      state.score += points;
+      progress3.textContent = '🎯 punteggio: ' + state.score + ' · colpi: ' + state.hits + ' / ' + REQUIRED_HITS;
+      toast('+' + points + ' punti (velocità ' + speed.toFixed(1) + ')');
 
-      // difficoltà crescente: più veloce e più piccolo ad ogni colpo
-      const speed = Math.hypot(state.vx, state.vy) * 1.16;
-      const ang = Math.atan2(state.vy, state.vx) + (Math.random()-0.5)*1.2;
-      state.vx = speed * Math.cos(ang);
-      state.vy = speed * Math.sin(ang);
-
-      w = Math.max(46, w - 7);
-      h = Math.max(28, h - 3);
-      btn.style.width = w+'px';
-      btn.style.height = h+'px';
-
-      toast('preso! ora corre di più');
+      // nuova velocità RANDOM (non crescente) per il prossimo giro
+      launch(randomSpeed());
 
       if(state.hits >= REQUIRED_HITS){
         document.getElementById('game3').style.display = 'none';
@@ -634,7 +1084,319 @@
     });
 
     document.getElementById('nextBtn3').addEventListener('click', ()=>{
-      toast('livello 4 in arrivo — torna presto');
+      goToLevel(4);
+    });
+  }
+
+  // ==================================================
+  // LIVELLO 4 — trova le parole scritte male (round statico)
+  // ==================================================
+  let level4Ready = false;
+  function initLevel4(){
+    if(level4Ready) return;
+    level4Ready = true;
+
+    const box = document.getElementById('translatebox');
+    const progress4 = document.getElementById('progress4');
+
+    // 10 parole comuni + variante con errore grossolano ma parola "simile"
+    const bank = [
+      { ok:'FAMIGLIA',   wrong:'FAMIGLA' },
+      { ok:'ATTENZIONE', wrong:'ATTENSIONE' },
+      { ok:'MACCHINA',   wrong:'MACHINA' },
+      { ok:'SEMPRE',     wrong:'SENPRE' },
+      { ok:'QUALCOSA',   wrong:'QUALCHOSA' },
+      { ok:'RAGAZZO',    wrong:'RAGAZO' },
+      { ok:'SCUOLA',     wrong:'SQUOLA' },
+      { ok:'GENERALE',   wrong:'GENERAL' },
+      { ok:'IMPORTANTE', wrong:'IMPORTANTA' },
+      { ok:'DOMANI',     wrong:'DOMANE' }
+    ];
+
+    let wrongIndexes = new Set();
+    let selected = new Set();
+
+    function buildRound(){
+      box.innerHTML = '';
+      selected = new Set();
+      wrongIndexes = new Set();
+      const howMany = 3 + Math.floor(Math.random()*2); // 3 o 4, come richiesto
+      const order = shuffle(bank.map((_,i)=>i));
+      order.slice(0, howMany).forEach(i => wrongIndexes.add(i));
+
+      bank.forEach((entry, i)=>{
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'tbtn';
+        b.textContent = wrongIndexes.has(i) ? entry.wrong : entry.ok;
+        b.dataset.idx = i;
+        b.addEventListener('click', ()=>{
+          if(selected.has(i)){ selected.delete(i); b.classList.remove('selected'); }
+          else { selected.add(i); b.classList.add('selected'); }
+        });
+        box.appendChild(b);
+      });
+      progress4.textContent = "seleziona le parole con l'errore, poi conferma";
+    }
+
+    buildRound();
+
+    document.getElementById('confirmWords').addEventListener('click', ()=>{
+      const same = selected.size === wrongIndexes.size &&
+        [...selected].every(i => wrongIndexes.has(i));
+      if(same){
+        document.getElementById('game4').style.display = 'none';
+        document.getElementById('win4').classList.add('show');
+      } else {
+        const correct = [...selected].filter(i => wrongIndexes.has(i)).length;
+        toast('trovate ' + correct + ' su ' + wrongIndexes.size + ' — riprova');
+      }
+    });
+
+    document.getElementById('nextBtn5').addEventListener('click', ()=>{
+      goToLevel(5);
+    });
+  }
+
+  // ==================================================
+  // LIVELLO 5 — phone slider selector (numeri italiani), fedele all'originale
+  // Fisica originale: la velocità si accumula in base al seno dell'angolo,
+  // frena per attrito, e lo slider stesso si inclina visivamente (angleSlider).
+  // ==================================================
+  let level5Ready = false;
+  function initLevel5(){
+    if(level5Ready) return;
+    level5Ready = true;
+
+    const MIN = 3000000000, MAX = 3999999999; // numeri mobili italiani: 10 cifre, iniziano per 3
+    const TOLERANCE = 50000;
+    const TICK_MS = 25;
+    const FRICTION = 0.99;
+    const INJECT = 800;      // spinta per tick in base al seno dell'angolo
+    const VALUE_SCALE = 360; // quanto la velocità si traduce in variazione di valore
+
+    const TARGET = MIN + Math.floor(Math.random() * (MAX - MIN));
+
+    const mainSlider = document.getElementById('mainSlider');
+    const angleSlider = document.getElementById('angleSlider');
+    const advancedControls = document.getElementById('advancedControls');
+    const phoneValue = document.getElementById('phoneValue');
+    const targetDisplay = document.getElementById('targetDisplay');
+    const distanceLine = document.getElementById('distanceLine');
+    const proxLabel = document.getElementById('proxLabel');
+    const proxBar = document.getElementById('proxBar');
+    const modeButtons = document.querySelectorAll('.modebtn');
+
+    let currentMode = 'base';
+    let speed = 0;
+
+    function formatPhone(v){
+      v = Math.max(MIN, Math.min(MAX, Math.round(v)));
+      const s = String(v).padStart(10,'0');
+      return s.slice(0,3) + ' ' + s.slice(3,6) + ' ' + s.slice(6,10);
+    }
+
+    targetDisplay.textContent = formatPhone(TARGET);
+    mainSlider.value = MIN + Math.floor(Math.random() * (MAX - MIN));
+
+    function updateDisplay(){
+      const v = parseFloat(mainSlider.value);
+      phoneValue.textContent = formatPhone(v);
+
+      const dist = Math.round(Math.abs(v - TARGET));
+      distanceLine.textContent = 'scarto: ' + dist.toLocaleString('it-IT');
+
+      // barra di prossimità: molto più leggibile del solo numero
+      const RANGE_FOR_BAR = 6000000; // oltre questa distanza la barra è a zero
+      const pct = Math.max(0, Math.min(100, Math.round(100 - (dist / RANGE_FOR_BAR) * 100)));
+      proxBar.style.width = pct + '%';
+
+      let label, color;
+      if(dist <= TOLERANCE){ label = 'sei sul numero!'; color = '#1B4B43'; }
+      else if(dist <= TOLERANCE*5){ label = 'vicinissimo'; color = '#1B4B43'; }
+      else if(dist <= TOLERANCE*40){ label = 'ti stai avvicinando'; color = '#8a6d1f'; }
+      else { label = 'ancora lontano'; color = '#D64545'; }
+      proxLabel.textContent = label;
+      proxBar.style.background = color;
+    }
+    updateDisplay();
+
+    // trascinare manualmente lo slider azzera la velocità accumulata (come l'originale)
+    mainSlider.addEventListener('input', ()=>{
+      speed = 0;
+      updateDisplay();
+    });
+
+    // pulsanti di precisione: garantiscono che il bersaglio sia sempre raggiungibile,
+    // anche se lo slider/la deriva non bastano da soli
+    document.querySelectorAll('.nudgebtn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        speed = 0;
+        let v = parseFloat(mainSlider.value) + parseInt(btn.dataset.d, 10);
+        v = Math.max(MIN, Math.min(MAX, v));
+        mainSlider.value = v;
+        updateDisplay();
+      });
+    });
+
+    // cambio modalità: solo Base / Avanzata, fedele all'originale (niente Fortuna)
+    modeButtons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        modeButtons.forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        currentMode = btn.dataset.mode;
+        const isAdv = (currentMode === 'avanzata');
+        advancedControls.style.display = isAdv ? 'block' : 'none';
+        mainSlider.classList.toggle('slim', !isAdv);
+        if(!isAdv){
+          angleSlider.value = 0;
+          speed = 0;
+          mainSlider.style.transform = 'rotate(0deg)';
+          toast('modalità base: slider stretto, niente deriva');
+        } else {
+          toast('modalità avanzata: la deriva fa il resto (e rimbalza)');
+        }
+      });
+    });
+
+    // fisica originale: la velocità si accumula in base al seno dell'angolo e frena per attrito
+    function physicsTick(){
+      if(currentMode === 'avanzata'){
+        const angle = parseFloat(angleSlider.value);
+        speed += Math.sin(angle * Math.PI / 180) * INJECT;
+        speed *= FRICTION;
+
+        let v = parseFloat(mainSlider.value) + Math.round(speed * VALUE_SCALE);
+
+        if(v > MAX){ v = MAX; speed *= -1; }
+        if(v < MIN){ v = MIN; speed *= -1; }
+
+        mainSlider.value = v;
+        mainSlider.style.transform = 'rotate(' + angle + 'deg)';
+        updateDisplay();
+      }
+    }
+    setInterval(physicsTick, TICK_MS);
+
+    document.getElementById('confirmPhone').addEventListener('click', ()=>{
+      const v = parseFloat(mainSlider.value);
+      const dist = Math.round(Math.abs(v - TARGET));
+      if(dist <= TOLERANCE){
+        document.getElementById('game5').style.display = 'none';
+        document.getElementById('win5').classList.add('show');
+      } else {
+        phoneValue.classList.add('shake');
+        setTimeout(()=>phoneValue.classList.remove('shake'), 300);
+        toast('ancora lontano: ' + dist.toLocaleString('it-IT'));
+      }
+    });
+
+    document.getElementById('nextBtn6').addEventListener('click', ()=>{
+      goToLevel(6);
+    });
+  }
+
+  // ==================================================
+  // LIVELLO 6 — gioco dei sinonimi (effetto cestino, fullscreen)
+  // ==================================================
+  let level6Ready = false;
+  function initLevel6(){
+    if(level6Ready) return;
+    level6Ready = true;
+
+    // banca dei round: per ora un solo esempio, pronta per essere ampliata
+    const roundBank = [
+      {
+        prompt: 'INUTILIZZABILE',
+        synonyms: ['inservibile','inutile','fuori uso','inadoperabile','irrecuperabile','rotto','danneggiato','rovinato','sciupato','guasto','deteriorato']
+      }
+    ];
+    const round = roundBank[Math.floor(Math.random()*roundBank.length)];
+    const synonymsNorm = round.synonyms.map(s => s.toLowerCase().trim());
+    const LIMIT = Math.min(...round.synonyms.map(s => s.length));
+
+    document.getElementById('synTarget').textContent = round.prompt;
+    document.getElementById('synList').textContent = round.synonyms.join(' · ');
+
+    const letterRow = document.getElementById('letterRow');
+    let lettersArr = [];
+    let idCounter = 0;
+
+    function render(){
+      letterRow.innerHTML = '';
+      lettersArr.forEach(entry=>{
+        const t = document.createElement('div');
+        t.className = 'letterTile';
+        t.textContent = entry.ch;
+        t.dataset.id = entry.id;
+        letterRow.appendChild(t);
+      });
+    }
+    render();
+
+    function flyToTrash(ch, fromRect){
+      const bin = document.getElementById('trashBinIcon');
+      const binRect = bin.getBoundingClientRect();
+      const ghost = document.createElement('div');
+      ghost.className = 'fallingLetter';
+      ghost.textContent = ch;
+      ghost.style.left = fromRect.left + 'px';
+      ghost.style.top = fromRect.top + 'px';
+      document.body.appendChild(ghost);
+      requestAnimationFrame(()=>{
+        ghost.style.transform = 'translate(' + (binRect.left - fromRect.left) + 'px,' + (binRect.top - fromRect.top) + 'px) rotate(420deg) scale(.3)';
+        ghost.style.opacity = '0';
+      });
+      setTimeout(()=> ghost.remove(), 650);
+    }
+
+    function addChar(ch){
+      lettersArr.push({ch, id: idCounter++});
+      render();
+      if(lettersArr.length > LIMIT){
+        const lastIdx = lettersArr.length - 1;
+        let idx;
+        do { idx = Math.floor(Math.random()*lettersArr.length); } while(idx === lastIdx && lettersArr.length > 1);
+        const removed = lettersArr[idx];
+        const tileEl = letterRow.querySelector('[data-id="'+removed.id+'"]');
+        const rect = tileEl ? tileEl.getBoundingClientRect() : null;
+        lettersArr.splice(idx, 1);
+        render();
+        if(rect) flyToTrash(removed.ch, rect);
+      }
+    }
+
+    function removeLast(){
+      lettersArr.pop();
+      render();
+    }
+
+    function trySubmit(){
+      const word = lettersArr.map(l=>l.ch).join('').toLowerCase().trim();
+      if(word.length && synonymsNorm.includes(word)){
+        document.getElementById('game6').style.display = 'none';
+        document.getElementById('win6').style.display = 'flex';
+      } else {
+        letterRow.classList.add('shake');
+        setTimeout(()=>letterRow.classList.remove('shake'), 300);
+        toast(word ? '"' + word + '" non è tra i sinonimi buoni' : 'scrivi prima qualcosa');
+      }
+    }
+
+    function handleKey(e){
+      if(document.getElementById('level6').style.display === 'none') return;
+      if(e.key === 'Backspace'){ removeLast(); e.preventDefault(); }
+      else if(e.key === 'Enter'){ trySubmit(); }
+      else if(e.key.length === 1 && /[a-zA-ZàèéìòùÀÈÉÌÒÙ ]/.test(e.key)){ addChar(e.key.toLowerCase()); }
+    }
+    document.addEventListener('keydown', handleKey);
+
+    document.getElementById('exitLevel6').addEventListener('click', ()=>{
+      tryGoToLevel(5);
+    });
+
+    document.getElementById('nextBtn7').addEventListener('click', ()=>{
+      toast('livello 7 in arrivo — torna presto');
     });
   }
 })();
