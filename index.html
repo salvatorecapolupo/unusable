@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UNUSABLE™ — Livello 1</title>
+<title>UNUSABLE — Livello 1</title>
 <style>
   :root{
     --mustard:#E8B33D;
@@ -247,6 +247,9 @@
     cursor:pointer;
     box-shadow:2px 2px 0 rgba(0,0,0,0.35);
     will-change:transform, filter;
+    white-space:nowrap;
+    overflow:hidden;
+    padding:0 4px;
   }
   .progress3{
     font-size:13px;
@@ -444,7 +447,16 @@
     background:var(--teal);
     background-image:
       repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
+    overflow:hidden;
   }
+  #level7 .fs-inner{
+    padding:12px 12px 10px;
+    justify-content:center;
+    gap:4px;
+  }
+  #level7 .fsprompt{ margin:0 0 2px; }
+  #level7 .fssub{ margin:0 0 6px; }
+  #level7 .fshint{ margin:6px 0 8px; }
   .fs-inner{
     min-height:100%;
     display:flex;
@@ -804,6 +816,85 @@
     30%,50%,70%{ transform:translate3d(-5px,2px,0) rotate(1deg); }
     40%,60%{ transform:translate3d(5px,-2px,0) rotate(-1deg); }
   }
+
+  #level9.fullscreen-level{
+    background:var(--teal);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
+  }
+  .clueLine{
+    font-size:14px;
+    margin:2px 0;
+    text-align:center;
+    max-width:340px;
+  }
+  .clueLine b{ color:var(--mustard); }
+  .crossGrid{
+    display:grid;
+    gap:4px;
+    margin:16px 0;
+  }
+  .crossCell{
+    width:48px;
+    height:48px;
+  }
+  .crossCell.blocked{ visibility:hidden; }
+  .crossCell input{
+    width:100%;
+    height:100%;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    text-transform:uppercase;
+    border:2px solid var(--ink);
+    border-radius:4px;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Courier New', monospace;
+    outline:none;
+  }
+  .crossCell input.crossed{
+    border-color:var(--mustard);
+    border-width:3px;
+  }
+  .debrisLetterX{
+    position:fixed;
+    left:0; top:0;
+    width:30px; height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--red);
+    color:var(--cream);
+    font-family:'Courier New', monospace;
+    font-weight:bold;
+    font-size:16px;
+    border-radius:4px;
+    box-shadow:2px 2px 0 rgba(0,0,0,0.35);
+    z-index:900;
+    pointer-events:none;
+    will-change:transform;
+  }
+
+  #level10.fullscreen-level{
+    background:var(--teal);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
+  }
+  .gauntletArea{
+    position:relative;
+    width:100%;
+    max-width:300px;
+    height:210px;
+    background:
+      radial-gradient(circle, rgba(0,0,0,0.25) 1px, transparent 1px) 0 0/16px 16px,
+      var(--teal-2);
+    border:2px solid var(--cream);
+    border-radius:6px;
+    margin:14px 0;
+    overflow:hidden;
+    touch-action:none;
+  }
   .beacon{
     position:fixed;
     top:14px;
@@ -846,7 +937,7 @@
 </head>
 <body>
 <div class="stage">
-  <div class="brand"><span>SISTEMA <b>UNUSABLE™</b></span><span id="levelLabel">LIVELLO 01 / 10</span></div>
+  <div class="brand"><span><b>UNUSABLE</b></span><span id="levelLabel">LIVELLO 01 / 10</span></div>
   <div class="levelbar" id="levelbar"></div>
   <div class="navrow">
     <button class="navbtn" id="prevLevelBtn">‹ livello prec.</button>
@@ -856,7 +947,7 @@
   <div class="card">
     <div id="level1">
       <div id="game">
-        <h1>Che data è oggi?</h1>
+        <h1>Che giorno è oggi?</h1>
         <p class="sub">⚠ i tasti non collaborano</p>
         <div class="display" id="display">__/__/____</div>
         <div class="hint" id="hint">formato: GG/MM/AAAA</div>
@@ -1050,6 +1141,46 @@
         <span>🔥</span><span>🔥</span><span>🔥</span><span>🔥</span><span>🔥</span><span>🔥</span><span>🔥</span>
       </div>
     </div>
+
+    <div id="level9" style="display:none" class="fullscreen-level">
+      <button class="exitbtn" id="exitLevel9">‹ livelli</button>
+      <div class="fs-inner" id="game9">
+        <p class="fsprompt">Cruciverba a caduta</p>
+        <p class="fssub">⚠ ogni tanto una lettera giusta crolla — ricontrolla prima di finire</p>
+        <p class="clueLine"><b>ORIZZONTALE:</b> <span id="clueAcross"></span></p>
+        <p class="clueLine"><b>VERTICALE:</b> <span id="clueDown"></span></p>
+        <div class="crossGrid" id="crossGrid"></div>
+        <p class="fshint">scrivi una lettera per cella — si passa alla successiva da sola</p>
+      </div>
+      <div class="fs-inner win" id="win9" style="display:none">
+        <h2>LIVELLO 9 SUPERATO</h2>
+        <p>Cruciverba completato, lettere cadute comprese. Non era scontato.</p>
+        <button class="main" id="nextBtn10">livello 10 →</button>
+      </div>
+    </div>
+
+    <div id="level10" style="display:none" class="fullscreen-level">
+      <button class="exitbtn" id="exitLevel10">‹ livelli</button>
+      <div class="fs-inner" id="game10">
+        <p class="fsprompt">Il Gauntlet Finale</p>
+        <p class="fssub" id="gauntletSub">Prova 1 di 3</p>
+        <div class="gauntletArea" id="gauntletArea"></div>
+        <p class="fshint" id="gauntletHint"></p>
+        <div class="dpad" id="gauntletDpad" style="display:none">
+          <button class="dpadbtn" data-dir="up" type="button">▲</button>
+          <div class="dpad-mid">
+            <button class="dpadbtn" data-dir="left" type="button">◀</button>
+            <button class="dpadbtn" data-dir="right" type="button">▶</button>
+          </div>
+          <button class="dpadbtn" data-dir="down" type="button">▼</button>
+        </div>
+      </div>
+      <div class="fs-inner win" id="win10" style="display:none">
+        <h2>HAI FINITO UNUSABLE</h2>
+        <p>Dieci livelli di interfacce impossibili, superati tutti. Complimenti vere.</p>
+        <button class="main" id="restartBtn10">torna al livello 1</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1059,7 +1190,7 @@
 <script>
 (function(){
   const TOTAL_LEVELS = 10;
-  const MAX_LEVEL_IMPLEMENTED = 8;
+  const MAX_LEVEL_IMPLEMENTED = 10;
   let currentLevel = 1;
 
   // ---- levelbar ----
@@ -1089,6 +1220,8 @@
     if(n === 6){ initLevel6(); enterLevel6(); }
     if(n === 7){ initLevel7(); enterLevel7(); }
     if(n === 8){ initLevel8(); enterLevel8(); }
+    if(n === 9){ initLevel9(); enterLevel9(); }
+    if(n === 10){ initLevel10(); enterLevel10(); }
   }
 
   // navigazione libera: si può saltare avanti e indietro tra i livelli già costruiti
@@ -1235,11 +1368,18 @@
     const REST = 0.55;    // rimbalzo (restituzione)
     const FRICTION = 0.995;
 
-    const labels = [
+    const labelPool = [
       'Accetto la gravità',
       'Accetto i cookie (letterali)',
-      'Accetto di non capire perché cade'
+      'Accetto di non capire perché cade',
+      'Accetto termini mai letti',
+      'Accetto la caduta libera',
+      'Accetto responsabilità vaghe',
+      'Accetto tutto, forse',
+      'Accetto anche questo'
     ];
+    const pillCount = 3 + Math.floor(Math.random()*6); // da 3 a 8
+    const labels = shuffle(labelPool).slice(0, pillCount);
 
     const pills = labels.map((label, i)=>{
       const el = document.createElement('div');
@@ -1398,8 +1538,12 @@
     }
     requestAnimationFrame(step);
 
-    btn.addEventListener('click', (e)=>{
+    const funnyPhrases = ['AHIA!', 'NON MI TOCCARE', 'LASCIAMI STARE', 'UFFA', 'OUCH', 'BASTA', 'EHI!', 'PIANO!'];
+    let revertTimer = null;
+
+    btn.addEventListener('pointerdown', (e)=>{
       e.stopPropagation();
+      e.preventDefault();
       const speed = Math.hypot(state.vx, state.vy);
       // punteggio inversamente proporzionale alla velocità: più è lento, più punti vale
       const points = Math.max(1, Math.round(20 - (speed - SPEED_MIN) / (SPEED_MAX - SPEED_MIN) * 17));
@@ -1408,10 +1552,18 @@
       progress3.textContent = '🎯 punteggio: ' + state.score + ' · colpi: ' + state.hits + ' / ' + REQUIRED_HITS;
       toast('+' + points + ' punti (velocità ' + speed.toFixed(1) + ')');
 
-      // nuova velocità RANDOM (non crescente) per il prossimo giro
+      // reazione buffa: scritta casuale per un attimo, poi torna a "INVIA"
+      const phrase = funnyPhrases[Math.floor(Math.random()*funnyPhrases.length)];
+      btn.textContent = phrase;
+      btn.style.fontSize = (phrase.length > 7 ? '10px' : '15px');
+      clearTimeout(revertTimer);
+      revertTimer = setTimeout(()=>{ btn.textContent = 'INVIA'; btn.style.fontSize = '15px'; }, 700);
+
+      // nuova velocità e traiettoria RANDOM (non crescente) per il prossimo giro
       launch(randomSpeed());
 
       if(state.hits >= REQUIRED_HITS){
+        clearTimeout(revertTimer);
         document.getElementById('game3').style.display = 'none';
         document.getElementById('win3').classList.add('show');
       }
@@ -1635,27 +1787,46 @@
   // ==================================================
   let level6Ready = false;
   let fallingLetters = [];
+  let resetLevel6 = null;
+
+  // piccolo dizionario interno in formato JSON: più vocaboli, per variabilità
+  const SYN_DICTIONARY_JSON = `[
+    {"prompt":"INUTILIZZABILE","synonyms":["inservibile","inutile","fuori uso","inadoperabile","irrecuperabile","rotto","danneggiato","rovinato","sciupato","guasto","deteriorato"]},
+    {"prompt":"VELOCE","synonyms":["rapido","svelto","celere","lesto","sbrigativo","fulmineo","spedito"]},
+    {"prompt":"DIFFICILE","synonyms":["arduo","complesso","ostico","impegnativo","faticoso","complicato"]},
+    {"prompt":"FELICE","synonyms":["contento","allegro","lieto","sereno","gioioso","soddisfatto"]},
+    {"prompt":"STANCO","synonyms":["affaticato","esausto","spossato","sfinito","provato"]},
+    {"prompt":"FACILE","synonyms":["semplice","agevole","immediato","elementare","comodo"]}
+  ]`;
+  const SYN_DICTIONARY = JSON.parse(SYN_DICTIONARY_JSON);
 
   function initLevel6(){
     if(level6Ready) return;
     level6Ready = true;
 
-    // banca dei round: per ora un solo esempio, pronta per essere ampliata
-    const roundBank = [
-      {
-        prompt: 'INUTILIZZABILE',
-        synonyms: ['inservibile','inutile','fuori uso','inadoperabile','irrecuperabile','rotto','danneggiato','rovinato','sciupato','guasto','deteriorato']
-      }
-    ];
-    const round = roundBank[Math.floor(Math.random()*roundBank.length)];
-    const synonymsNorm = round.synonyms.map(s => s.toLowerCase().trim());
-    const LIMIT = Math.min(...round.synonyms.map(s => s.length));
-
-    document.getElementById('synTarget').textContent = round.prompt;
-    document.getElementById('synList').textContent = round.synonyms.join(' · ');
-
     const synInput = document.getElementById('synInput');
-    synInput.style.width = LIMIT + 'ch';
+    let synonymsNorm = [];
+
+    resetLevel6 = function(){
+      // estrae un vocabolo a caso dal dizionario JSON ad ogni round, senza
+      // toccare la struttura grafica (stessi elementi, solo contenuto diverso)
+      const round = SYN_DICTIONARY[Math.floor(Math.random()*SYN_DICTIONARY.length)];
+      synonymsNorm = round.synonyms.map(s => s.toLowerCase().trim());
+      const LIMIT = Math.min(...round.synonyms.map(s => s.length));
+
+      document.getElementById('synTarget').textContent = round.prompt;
+      document.getElementById('synList').textContent = round.synonyms.join(' · ');
+      synInput.style.width = LIMIT + 'ch';
+      synInput.dataset.limit = LIMIT;
+      synInput.value = '';
+
+      document.getElementById('game6').style.display = 'block';
+      document.getElementById('win6').style.display = 'none';
+      fallingLetters.forEach(o=> o.el.remove());
+      fallingLetters = [];
+      setTimeout(()=> synInput.focus(), 50);
+    };
+    resetLevel6();
 
     // fisica a gravità per le lettere che escono dal confine del campo (come nel livello gravità)
     const G = 0.45, REST = 0.5;
@@ -1700,9 +1871,10 @@
     // cade dal confine del campo in poi, con la fisica qui sopra
     synInput.addEventListener('input', ()=>{
       const val = synInput.value;
-      if(val.length > LIMIT){
-        const overflow = val.slice(LIMIT);
-        synInput.value = val.slice(0, LIMIT);
+      const limit = parseInt(synInput.dataset.limit, 10);
+      if(val.length > limit){
+        const overflow = val.slice(limit);
+        synInput.value = val.slice(0, limit);
         overflow.split('').forEach(spawnFallingLetter);
       }
     });
@@ -1733,16 +1905,7 @@
   }
 
   function enterLevel6(){
-    const synInput = document.getElementById('synInput');
-    if(synInput){
-      synInput.value = '';
-      setTimeout(()=> synInput.focus(), 50);
-    }
-    document.getElementById('game6').style.display = 'block';
-    document.getElementById('win6').style.display = 'none';
-    // ripulisce le lettere cadute da una visita precedente
-    fallingLetters.forEach(o=> o.el.remove());
-    fallingLetters = [];
+    if(resetLevel6) resetLevel6();
   }
 
   // ==================================================
@@ -1755,7 +1918,14 @@
     if(level7Ready) return;
     level7Ready = true;
 
-    const CELL = 44;
+    let CELL = 44;
+    const MAX_COLS = 6, MAX_ROWS = 5;
+    function computeCellSize(){
+      const reservedH = 220; // titolo + sottotitolo + hint + d-pad + margini
+      const availH = window.innerHeight - reservedH;
+      const availW = Math.min(window.innerWidth - 40, 340);
+      CELL = Math.max(26, Math.min(44, Math.floor(availH / MAX_ROWS), Math.floor(availW / MAX_COLS)));
+    }
     const fieldNames = ['UTENTE', 'PASSWORD'];
     const sizes = [{cols:5, rows:5}, {cols:6, rows:5}];
     let stage = 0;
@@ -1893,6 +2063,7 @@
 
     resetLevel7 = function(){
       stage = 0;
+      computeCellSize();
       document.getElementById('game7').style.display = 'block';
       document.getElementById('win7').style.display = 'none';
       setupStage();
@@ -2166,13 +2337,450 @@
 
     document.getElementById('exitLevel8').addEventListener('click', ()=> tryGoToLevel(7));
     document.getElementById('nextBtn9').addEventListener('click', ()=>{
-      toast('livello 9 in arrivo — torna presto');
+      goToLevel(9);
     });
   }
 
   let resetLevel8 = null;
   function enterLevel8(){
     if(resetLevel8) resetLevel8();
+  }
+
+  // ==================================================
+  // LIVELLO 9 — cruciverba a caduta (definizioni pescate da un piccolo JSON interno)
+  // ==================================================
+  let level9Ready = false;
+  let resetLevel9 = null;
+  let fallingCrossLetters = [];
+
+  // piccolo dizionario JSON: schema fisso (incrocio a griglia 4x4), coppie di parole variabili
+  const CROSSWORD_DICTIONARY_JSON = `[
+    {"across":{"word":"ROSA","clue":"Fiore spinoso, simbolo dell'amore"},"down":{"word":"ONDA","clue":"Movimento del mare che si infrange sulla riva"},"crossAt":1},
+    {"across":{"word":"LUNA","clue":"Satellite naturale della Terra"},"down":{"word":"NAVE","clue":"Mezzo che naviga sul mare"},"crossAt":2},
+    {"across":{"word":"MARE","clue":"Distesa d'acqua salata"},"down":{"word":"RAMO","clue":"Parte laterale di un albero"},"crossAt":2},
+    {"across":{"word":"VITA","clue":"L'esistenza in generale"},"down":{"word":"TANA","clue":"Rifugio di un animale selvatico"},"crossAt":2}
+  ]`;
+  const CROSSWORD_DICTIONARY = JSON.parse(CROSSWORD_DICTIONARY_JSON);
+
+  function initLevel9(){
+    if(level9Ready) return;
+    level9Ready = true;
+
+    const grid = document.getElementById('crossGrid');
+    grid.style.gridTemplateColumns = 'repeat(4, 48px)';
+    grid.style.gridTemplateRows = 'repeat(4, 48px)';
+
+    let puzzle = null;
+    let collapseTimer = null;
+
+    // fisica a gravità per le lettere che crollano (stesso stile degli altri livelli)
+    function spawnFallingCrossLetter(ch, rect){
+      const el = document.createElement('div');
+      el.className = 'debrisLetterX';
+      el.textContent = ch;
+      document.body.appendChild(el);
+      fallingCrossLetters.push({
+        el,
+        x: rect.left,
+        y: rect.top,
+        vx: (Math.random()-0.5)*2.5,
+        vy: 0,
+        floorY: window.innerHeight - 30,
+        settled: false
+      });
+    }
+    function crossDebrisLoop(){
+      fallingCrossLetters.forEach(o=>{
+        if(o.settled) return;
+        o.vy += 0.45;
+        o.x += o.vx; o.y += o.vy;
+        if(o.y > o.floorY){
+          o.y = o.floorY; o.vy *= -0.4;
+          if(Math.abs(o.vy) < 1){ o.vy = 0; o.settled = true; }
+        }
+        o.el.style.transform = 'translate(' + o.x + 'px,' + o.y + 'px)';
+      });
+      requestAnimationFrame(crossDebrisLoop);
+    }
+    requestAnimationFrame(crossDebrisLoop);
+
+    function buildGrid(){
+      grid.innerHTML = '';
+      for(let r=0;r<4;r++){
+        for(let c=0;c<4;c++){
+          const cell = document.createElement('div');
+          const isAcross = (r === 0);
+          const isDown = (c === puzzle.crossAt);
+          if(!isAcross && !isDown){
+            cell.className = 'crossCell blocked';
+            grid.appendChild(cell);
+            continue;
+          }
+          cell.className = 'crossCell';
+          const input = document.createElement('input');
+          input.maxLength = 1;
+          input.dataset.row = r;
+          input.dataset.col = c;
+          if(r === 0 && c === puzzle.crossAt) input.classList.add('crossed');
+          input.addEventListener('input', ()=> onCellInput(input));
+          input.addEventListener('keydown', (e)=> onCellKeydown(e, input));
+          cell.appendChild(input);
+          grid.appendChild(cell);
+        }
+      }
+    }
+
+    function expectedLetter(r, c){
+      if(r === 0) return puzzle.across.word[c].toUpperCase();
+      if(c === puzzle.crossAt) return puzzle.down.word[r].toUpperCase();
+      return null;
+    }
+
+    function focusCell(r, c){
+      const input = grid.querySelector('input[data-row="'+r+'"][data-col="'+c+'"]');
+      if(input) input.focus();
+    }
+
+    function onCellKeydown(e, input){
+      const r = parseInt(input.dataset.row,10), c = parseInt(input.dataset.col,10);
+      if(e.key === 'Backspace' && !input.value){
+        // torna indietro nella stessa parola
+        if(r === 0 && c > 0) focusCell(0, c-1);
+        else if(c === puzzle.crossAt && r > 0) focusCell(r-1, c);
+      }
+    }
+
+    function onCellInput(input){
+      input.value = input.value.slice(-1).toUpperCase();
+      const r = parseInt(input.dataset.row,10), c = parseInt(input.dataset.col,10);
+      if(input.value){
+        // avanza automaticamente nella cella successiva della stessa parola
+        if(r === 0 && c < 3){
+          focusCell(0, c+1);
+        } else if(c === puzzle.crossAt && r < 3){
+          focusCell(r+1, c);
+        }
+      }
+      checkWin();
+    }
+
+    function checkWin(){
+      const inputs = grid.querySelectorAll('input');
+      let complete = true;
+      inputs.forEach(inp=>{
+        const r = parseInt(inp.dataset.row,10), c = parseInt(inp.dataset.col,10);
+        if(inp.value !== expectedLetter(r,c)) complete = false;
+      });
+      if(complete){
+        clearInterval(collapseTimer);
+        document.getElementById('game9').style.display = 'none';
+        document.getElementById('win9').style.display = 'flex';
+      }
+    }
+
+    // ogni tanto una lettera GIÀ GIUSTA crolla e va riscritta
+    function maybeCollapseLetter(){
+      if(document.getElementById('level9').style.display === 'none') return;
+      const inputs = Array.from(grid.querySelectorAll('input'));
+      const correctOnes = inputs.filter(inp=>{
+        const r = parseInt(inp.dataset.row,10), c = parseInt(inp.dataset.col,10);
+        return inp.value && inp.value === expectedLetter(r,c);
+      });
+      if(correctOnes.length < 2) return; // niente crolli se c'è poco da perdere
+      const target = correctOnes[Math.floor(Math.random()*correctOnes.length)];
+      target.classList.add('shake');
+      setTimeout(()=>{
+        target.classList.remove('shake');
+        const rect = target.getBoundingClientRect();
+        spawnFallingCrossLetter(target.value, rect);
+        target.value = '';
+      }, 250);
+    }
+
+    resetLevel9 = function(){
+      puzzle = CROSSWORD_DICTIONARY[Math.floor(Math.random()*CROSSWORD_DICTIONARY.length)];
+      document.getElementById('clueAcross').textContent = puzzle.across.clue;
+      document.getElementById('clueDown').textContent = puzzle.down.clue;
+      buildGrid();
+      document.getElementById('game9').style.display = 'block';
+      document.getElementById('win9').style.display = 'none';
+      fallingCrossLetters.forEach(o=> o.el.remove());
+      fallingCrossLetters = [];
+      clearInterval(collapseTimer);
+      collapseTimer = setInterval(maybeCollapseLetter, 3500);
+      setTimeout(()=> focusCell(0,0), 50);
+    };
+    resetLevel9();
+
+    document.getElementById('exitLevel9').addEventListener('click', ()=> tryGoToLevel(8));
+    document.getElementById('nextBtn10').addEventListener('click', ()=>{
+      goToLevel(10);
+    });
+  }
+
+  function enterLevel9(){
+    if(resetLevel9) resetLevel9();
+  }
+
+  // ==================================================
+  // LIVELLO 10 — Il Gauntlet Finale: mini-versioni delle sfide già fatte, in sequenza
+  // ==================================================
+  let level10Ready = false;
+  let resetLevel10 = null;
+
+  function initLevel10(){
+    if(level10Ready) return;
+    level10Ready = true;
+
+    const area = document.getElementById('gauntletArea');
+    const sub = document.getElementById('gauntletSub');
+    const hint = document.getElementById('gauntletHint');
+    const dpad = document.getElementById('gauntletDpad');
+    let stage = 0;
+    let activeRaf = null;
+    let mazeKeyHandler = null;
+
+    function cleanupStage(){
+      if(activeRaf){ cancelAnimationFrame(activeRaf); activeRaf = null; }
+      if(mazeKeyHandler){ document.removeEventListener('keydown', mazeKeyHandler); mazeKeyHandler = null; }
+      area.innerHTML = '';
+      dpad.style.display = 'none';
+    }
+
+    // ---- Prova 1: mini bounce (dal livello 3) ----
+    function startBounceStage(){
+      cleanupStage();
+      sub.textContent = 'Prova 1 di 3 — acchiappa INVIA (2 colpi)';
+      hint.textContent = 'clicca il tasto rosso quando passa vicino';
+
+      const W = area.clientWidth, H = area.clientHeight;
+      const w = 70, h = 36;
+      const btn = document.createElement('button');
+      btn.className = 'dvdbtn';
+      btn.type = 'button';
+      btn.textContent = 'INVIA';
+      btn.style.width = w+'px';
+      btn.style.height = h+'px';
+      area.appendChild(btn);
+
+      let x = Math.random()*(W-w), y = Math.random()*(H-h);
+      const ang = Math.random()*Math.PI*2, speed = 3.2;
+      let vx = speed*Math.cos(ang), vy = speed*Math.sin(ang);
+      let hits = 0;
+
+      function step(){
+        x += vx; y += vy;
+        if(x <= 0){ x = 0; vx *= -1; }
+        if(x >= W-w){ x = W-w; vx *= -1; }
+        if(y <= 0){ y = 0; vy *= -1; }
+        if(y >= H-h){ y = H-h; vy *= -1; }
+        btn.style.transform = 'translate('+x+'px,'+y+'px)';
+        activeRaf = requestAnimationFrame(step);
+      }
+      activeRaf = requestAnimationFrame(step);
+
+      btn.addEventListener('pointerdown', (e)=>{
+        e.stopPropagation();
+        hits++;
+        if(hits >= 2){
+          toast('prima prova superata!');
+          stage = 1;
+          startGravityStage();
+        }
+      });
+    }
+
+    // ---- Prova 2: mini gravità (dal livello 2) ----
+    function startGravityStage(){
+      cleanupStage();
+      sub.textContent = 'Prova 2 di 3 — accetta al volo';
+      hint.textContent = 'clicca le pillole prima che rimbalzino via';
+
+      const W = area.clientWidth, H = area.clientHeight;
+      const pw = 130, ph = 34;
+      const labels = ['Accetto', 'Va bene così'];
+      const pills = labels.map((label, i)=>{
+        const el = document.createElement('div');
+        el.className = 'pill';
+        el.textContent = label;
+        area.appendChild(el);
+        return { el, x: 10+Math.random()*(W-pw-20), y: -30-i*70, vx: (Math.random()-0.5)*2, vy: 0, accepted:false };
+      });
+
+      function render(p){ p.el.style.transform = 'translate('+p.x+'px,'+p.y+'px)'; }
+
+      function step(){
+        pills.forEach(p=>{
+          if(p.accepted){ render(p); return; }
+          p.vy += 0.35; p.x += p.vx; p.y += p.vy;
+          if(p.x < 0){ p.x = 0; p.vx *= -0.55; }
+          if(p.x > W-pw){ p.x = W-pw; p.vx *= -0.55; }
+          if(p.y > H-ph){
+            p.y = H-ph; p.vy *= -0.55;
+            if(Math.abs(p.vy) < 1) p.vy = -Math.random()*3;
+          }
+          render(p);
+        });
+        activeRaf = requestAnimationFrame(step);
+      }
+      activeRaf = requestAnimationFrame(step);
+
+      pills.forEach(p=>{
+        p.el.addEventListener('click', ()=>{
+          if(p.accepted) return;
+          p.accepted = true; p.vx = 0; p.vy = 0;
+          p.el.classList.add('accepted');
+          if(pills.every(q=>q.accepted)){
+            toast('seconda prova superata!');
+            stage = 2;
+            startMazeStage();
+          }
+        });
+      });
+    }
+
+    // ---- Prova 3: mini labirinto (dal livello 7) ----
+    function generateMiniMaze(cols, rows){
+      const cells = [];
+      for(let r=0;r<rows;r++){
+        cells.push([]);
+        for(let c=0;c<cols;c++) cells[r].push({n:false,e:false,s:false,w:false,visited:false});
+      }
+      const dirs = [
+        {name:'n', dr:-1, dc:0, opp:'s'},
+        {name:'e', dr:0, dc:1, opp:'w'},
+        {name:'s', dr:1, dc:0, opp:'n'},
+        {name:'w', dr:0, dc:-1, opp:'e'}
+      ];
+      const stack = [{r:0,c:0}];
+      cells[0][0].visited = true;
+      while(stack.length){
+        const cur = stack[stack.length-1];
+        const options = shuffle(dirs).filter(d=>{
+          const nr=cur.r+d.dr, nc=cur.c+d.dc;
+          return nr>=0 && nr<rows && nc>=0 && nc<cols && !cells[nr][nc].visited;
+        });
+        if(options.length === 0){ stack.pop(); continue; }
+        const d = options[0];
+        const nr=cur.r+d.dr, nc=cur.c+d.dc;
+        cells[cur.r][cur.c][d.name] = true;
+        cells[nr][nc][d.opp] = true;
+        cells[nr][nc].visited = true;
+        stack.push({r:nr, c:nc});
+      }
+      return cells;
+    }
+
+    function startMazeStage(){
+      cleanupStage();
+      sub.textContent = 'Prova 3 di 3 — raggiungi il traguardo';
+      hint.textContent = 'frecce o D-pad qui sotto';
+      dpad.style.display = 'flex';
+
+      const cols = 4, rows = 4, CELL = 44;
+      const grid = document.createElement('div');
+      grid.className = 'mazeGrid';
+      grid.style.gridTemplateColumns = 'repeat('+cols+', '+CELL+'px)';
+      grid.style.gridTemplateRows = 'repeat('+rows+', '+CELL+'px)';
+      area.appendChild(grid);
+
+      const player = document.createElement('div');
+      player.className = 'mazePlayer';
+      player.textContent = '●';
+      area.appendChild(player);
+
+      const target = document.createElement('div');
+      target.className = 'mazeTarget';
+      target.textContent = '🚩';
+      area.appendChild(target);
+
+      const maze = generateMiniMaze(cols, rows);
+      const pos = {r:0, c:0};
+      const tgt = {r:rows-1, c:cols-1};
+
+      function renderCells(){
+        grid.innerHTML = '';
+        for(let r=0;r<rows;r++){
+          for(let c=0;c<cols;c++){
+            const cell = maze[r][c];
+            const div = document.createElement('div');
+            div.className = 'mazeCell' +
+              (cell.n?' open-n':'') + (cell.e?' open-e':'') + (cell.s?' open-s':'') + (cell.w?' open-w':'');
+            div.style.width = CELL+'px';
+            div.style.height = CELL+'px';
+            grid.appendChild(div);
+          }
+        }
+      }
+      function placeVis(){
+        player.style.transform = 'translate('+(pos.c*CELL)+'px,'+(pos.r*CELL)+'px)';
+        target.style.transform = 'translate('+(tgt.c*CELL)+'px,'+(tgt.r*CELL)+'px)';
+      }
+      renderCells();
+      placeVis();
+
+      function move(dir){
+        const cell = maze[pos.r][pos.c];
+        if(dir === 'up' && cell.n) pos.r--;
+        else if(dir === 'down' && cell.s) pos.r++;
+        else if(dir === 'left' && cell.w) pos.c--;
+        else if(dir === 'right' && cell.e) pos.c++;
+        else {
+          player.classList.add('shake');
+          setTimeout(()=>player.classList.remove('shake'), 200);
+          return;
+        }
+        placeVis();
+        if(pos.r === tgt.r && pos.c === tgt.c){
+          toast('gauntlet completato!');
+          finishGauntlet();
+        }
+      }
+
+      mazeKeyHandler = function(e){
+        if(document.getElementById('level10').style.display === 'none') return;
+        if(e.key === 'ArrowUp'){ move('up'); e.preventDefault(); }
+        else if(e.key === 'ArrowDown'){ move('down'); e.preventDefault(); }
+        else if(e.key === 'ArrowLeft'){ move('left'); e.preventDefault(); }
+        else if(e.key === 'ArrowRight'){ move('right'); e.preventDefault(); }
+      };
+      document.addEventListener('keydown', mazeKeyHandler);
+
+      dpad.querySelectorAll('.dpadbtn[data-dir]').forEach(b=>{
+        b.onclick = ()=> move(b.dataset.dir);
+      });
+
+      let tsx=0, tsy=0;
+      area.ontouchstart = (e)=>{ tsx=e.touches[0].clientX; tsy=e.touches[0].clientY; };
+      area.ontouchend = (e)=>{
+        const dx = e.changedTouches[0].clientX - tsx;
+        const dy = e.changedTouches[0].clientY - tsy;
+        if(Math.max(Math.abs(dx),Math.abs(dy)) < 24) return;
+        if(Math.abs(dx) > Math.abs(dy)) move(dx>0?'right':'left');
+        else move(dy>0?'down':'up');
+      };
+    }
+
+    function finishGauntlet(){
+      cleanupStage();
+      document.getElementById('game10').style.display = 'none';
+      document.getElementById('win10').style.display = 'flex';
+    }
+
+    resetLevel10 = function(){
+      stage = 0;
+      document.getElementById('game10').style.display = 'block';
+      document.getElementById('win10').style.display = 'none';
+      startBounceStage();
+    };
+    resetLevel10();
+
+    document.getElementById('exitLevel10').addEventListener('click', ()=> tryGoToLevel(9));
+    document.getElementById('restartBtn10').addEventListener('click', ()=> goToLevel(1));
+  }
+
+  function enterLevel10(){
+    if(resetLevel10) resetLevel10();
   }
 })();
 </script>
